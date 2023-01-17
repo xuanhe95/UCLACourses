@@ -1,0 +1,3 @@
+#!/bin/bash
+cat | tr -cs '[:alnum:][:punct:]' '[\n*]' | sort -u | comm -23 - sorted.words
+exit 0

@@ -1,0 +1,284 @@
+1.
+
+/usr/bin/sh
+/usr/bin/sleep
+/usr/bin/type
+
+2.
+
+sed
+
+sed - stream editor for filtering and transforming text
+
+Function:
+
+ Sed  is a stream editor.  A stream editor is used to perform basic text transformations on an input stream (a file or input from  a  pipeline). While  in  some  ways similar to an editor which permits scripted edits (such as ed), sed works by making only one pass over the input(s),  and is consequently more efficient.  But it is sed's ability to filter text in a pipeline which particularly distinguishes it from other  types  of editors.
+
+seq
+
+seq - print a sequence of numbers
+
+Function:
+
+Print numbers from FIRST to LAST, in steps of INCREMENT.
+
+3.
+
+/usr/local/cs/bin/emacs-28.2/bin/emacs-28.2
+
+
+
+4.
+gcc (GCC) 8.5.0 20210514 (Red Hat 8.5.0-4)
+gcc (GCC) 12.2.0
+
+
+
+the first gcc is located in "/usr/bin/gcc"
+the second gcc is located in "/usr/local/cs/bin/gcc"
+since we added "/usr/local/cs/bin" to our $PATH, it will search programs in this path
+
+
+
+
+5.
+u(the user who own it)
++(selected file mode bits to be added to the existing file mode bits of each file)
+s(set user or group ID on execution)
+x(execute(or search for directories))
+
+o(other users not in the file's group)
+-(remove selected file mode bits)
+w(write)
+
+
+Add "set user or group ID on execution" and "execute(or search for directories)" to the user who own it.
+
+Remove write file mode bit from other users not in the file's group
+
+6.
+
+
+/usr/local/cs
+/usr/local/cs/wget2-2.0.1
+/usr/local/cs/wget2-2.0.1/include
+/usr/local/cs/wget2-2.0.1/lib
+/usr/local/cs/wget2-2.0.1/lib/pkgconfig
+/usr/local/cs/wget2-2.0.1/bin
+/usr/local/cs/wget2-2.0.1/share
+/usr/local/cs/wget2-2.0.1/share/locale
+/usr/local/cs/wget2-2.0.1/share/locale/ca
+/usr/local/cs/wget2-2.0.1/share/locale/ca/LC_MESSAGES
+/usr/local/cs/wget2-2.0.1/share/locale/cs
+/usr/local/cs/wget2-2.0.1/share/locale/cs/LC_MESSAGES
+/usr/local/cs/wget2-2.0.1/share/locale/de
+/usr/local/cs/wget2-2.0.1/share/locale/de/LC_MESSAGES
+/usr/local/cs/wget2-2.0.1/share/locale/eo
+/usr/local/cs/wget2-2.0.1/share/locale/eo/LC_MESSAGES
+/usr/local/cs/wget2-2.0.1/share/locale/es
+/usr/local/cs/wget2-2.0.1/share/locale/es/LC_MESSAGES
+/usr/local/cs/wget2-2.0.1/share/locale/et
+/usr/local/cs/wget2-2.0.1/share/locale/et/LC_MESSAGES
+/usr/local/cs/wget2-2.0.1/share/locale/fi
+/usr/local/cs/wget2-2.0.1/share/locale/fi/LC_MESSAGES
+/usr/local/cs/wget2-2.0.1/share/locale/fr
+/usr/local/cs/wget2-2.0.1/share/locale/fr/LC_MESSAGES
+/usr/local/cs/wget2-2.0.1/share/locale/ga
+/usr/local/cs/wget2-2.0.1/share/locale/ga/LC_MESSAGES
+/usr/local/cs/wget2-2.0.1/share/locale/hr
+/usr/local/cs/wget2-2.0.1/share/locale/hr/LC_MESSAGES
+/usr/local/cs/wget2-2.0.1/share/locale/hu
+/usr/local/cs/wget2-2.0.1/share/locale/hu/LC_MESSAGES
+/usr/local/cs/wget2-2.0.1/share/locale/id
+/usr/local/cs/wget2-2.0.1/share/locale/id/LC_MESSAGES
+/usr/local/cs/wget2-2.0.1/share/locale/it
+/usr/local/cs/wget2-2.0.1/share/locale/it/LC_MESSAGES
+/usr/local/cs/wget2-2.0.1/share/locale/ja
+/usr/local/cs/wget2-2.0.1/share/locale/ja/LC_MESSAGES
+/usr/local/cs/wget2-2.0.1/share/locale/nb
+/usr/local/cs/wget2-2.0.1/share/locale/nb/LC_MESSAGES
+/usr/local/cs/wget2-2.0.1/share/locale/nl
+/usr/local/cs/wget2-2.0.1/share/locale/nl/LC_MESSAGES
+/usr/local/cs/wget2-2.0.1/share/locale/pl
+/usr/local/cs/wget2-2.0.1/share/locale/pl/LC_MESSAGES
+/usr/local/cs/wget2-2.0.1/share/locale/pt_BR
+/usr/local/cs/wget2-2.0.1/share/locale/pt_BR/LC_MESSAGES
+/usr/local/cs/wget2-2.0.1/share/locale/ro
+/usr/local/cs/wget2-2.0.1/share/locale/ro/LC_MESSAGES
+/usr/local/cs/wget2-2.0.1/share/locale/ru
+/usr/local/cs/wget2-2.0.1/share/locale/ru/LC_MESSAGES
+/usr/local/cs/wget2-2.0.1/share/locale/sk
+/usr/local/cs/wget2-2.0.1/share/locale/sk/LC_MESSAGES
+/usr/local/cs/wget2-2.0.1/share/locale/sr
+/usr/local/cs/wget2-2.0.1/share/locale/sr/LC_MESSAGES
+/usr/local/cs/wget2-2.0.1/share/locale/sv
+/usr/local/cs/wget2-2.0.1/share/locale/sv/LC_MESSAGES
+/usr/local/cs/wget2-2.0.1/share/locale/tr
+/usr/local/cs/wget2-2.0.1/share/locale/tr/LC_MESSAGES
+/usr/local/cs/wget2-2.0.1/share/locale/uk
+/usr/local/cs/wget2-2.0.1/share/locale/uk/LC_MESSAGES
+/usr/local/cs/wget2-2.0.1/share/locale/vi
+/usr/local/cs/wget2-2.0.1/share/locale/vi/LC_MESSAGES
+/usr/local/cs/wget2-2.0.1/share/locale/zh_CN
+/usr/local/cs/wget2-2.0.1/share/locale/zh_CN/LC_MESSAGES
+/usr/local/cs/bin
+/usr/local/cs/diffutils-3.9
+/usr/local/cs/diffutils-3.9/bin
+/usr/local/cs/diffutils-3.9/share
+/usr/local/cs/diffutils-3.9/share/info
+/usr/local/cs/diffutils-3.9/share/man
+/usr/local/cs/diffutils-3.9/share/man/man1
+/usr/local/cs/diffutils-3.9/share/locale
+/usr/local/cs/diffutils-3.9/share/locale/bg
+/usr/local/cs/diffutils-3.9/share/locale/bg/LC_MESSAGES
+/usr/local/cs/diffutils-3.9/share/locale/ca
+/usr/local/cs/diffutils-3.9/share/locale/ca/LC_MESSAGES
+/usr/local/cs/diffutils-3.9/share/locale/cs
+/usr/local/cs/diffutils-3.9/share/locale/cs/LC_MESSAGES
+/usr/local/cs/diffutils-3.9/share/locale/da
+/usr/local/cs/diffutils-3.9/share/locale/da/LC_MESSAGES
+/usr/local/cs/diffutils-3.9/share/locale/de
+/usr/local/cs/diffutils-3.9/share/locale/de/LC_MESSAGES
+/usr/local/cs/diffutils-3.9/share/locale/el
+/usr/local/cs/diffutils-3.9/share/locale/el/LC_MESSAGES
+/usr/local/cs/diffutils-3.9/share/locale/eo
+/usr/local/cs/diffutils-3.9/share/locale/eo/LC_MESSAGES
+/usr/local/cs/diffutils-3.9/share/locale/es
+/usr/local/cs/diffutils-3.9/share/locale/es/LC_MESSAGES
+/usr/local/cs/diffutils-3.9/share/locale/fi
+/usr/local/cs/diffutils-3.9/share/locale/fi/LC_MESSAGES
+/usr/local/cs/diffutils-3.9/share/locale/fr
+/usr/local/cs/diffutils-3.9/share/locale/fr/LC_MESSAGES
+/usr/local/cs/diffutils-3.9/share/locale/ga
+/usr/local/cs/diffutils-3.9/share/locale/ga/LC_MESSAGES
+/usr/local/cs/diffutils-3.9/share/locale/gl
+/usr/local/cs/diffutils-3.9/share/locale/gl/LC_MESSAGES
+/usr/local/cs/diffutils-3.9/share/locale/he
+/usr/local/cs/diffutils-3.9/share/locale/he/LC_MESSAGES
+/usr/local/cs/diffutils-3.9/share/locale/hr
+/usr/local/cs/diffutils-3.9/share/locale/hr/LC_MESSAGES
+/usr/local/cs/diffutils-3.9/share/locale/hu
+/usr/local/cs/diffutils-3.9/share/locale/hu/LC_MESSAGES
+/usr/local/cs/diffutils-3.9/share/locale/id
+/usr/local/cs/diffutils-3.9/share/locale/id/LC_MESSAGES
+/usr/local/cs/diffutils-3.9/share/locale/it
+/usr/local/cs/diffutils-3.9/share/locale/it/LC_MESSAGES
+/usr/local/cs/diffutils-3.9/share/locale/ja
+/usr/local/cs/diffutils-3.9/share/locale/ja/LC_MESSAGES
+/usr/local/cs/diffutils-3.9/share/locale/ka
+/usr/local/cs/diffutils-3.9/share/locale/ka/LC_MESSAGES
+/usr/local/cs/diffutils-3.9/share/locale/ko
+/usr/local/cs/diffutils-3.9/share/locale/ko/LC_MESSAGES
+/usr/local/cs/diffutils-3.9/share/locale/lv
+/usr/local/cs/diffutils-3.9/share/locale/lv/LC_MESSAGES
+/usr/local/cs/diffutils-3.9/share/locale/ms
+/usr/local/cs/diffutils-3.9/share/locale/ms/LC_MESSAGES
+/usr/local/cs/diffutils-3.9/share/locale/nb
+/usr/local/cs/diffutils-3.9/share/locale/nb/LC_MESSAGES
+/usr/local/cs/diffutils-3.9/share/locale/nl
+/usr/local/cs/diffutils-3.9/share/locale/nl/LC_MESSAGES
+/usr/local/cs/diffutils-3.9/share/locale/pl
+/usr/local/cs/diffutils-3.9/share/locale/pl/LC_MESSAGES
+/usr/local/cs/diffutils-3.9/share/locale/pt
+/usr/local/cs/diffutils-3.9/share/locale/pt/LC_MESSAGES
+/usr/local/cs/diffutils-3.9/share/locale/pt_BR
+/usr/local/cs/diffutils-3.9/share/locale/pt_BR/LC_MESSAGES
+/usr/local/cs/diffutils-3.9/share/locale/ro
+/usr/local/cs/diffutils-3.9/share/locale/ro/LC_MESSAGES
+/usr/local/cs/diffutils-3.9/share/locale/ru
+/usr/local/cs/diffutils-3.9/share/locale/ru/LC_MESSAGES
+/usr/local/cs/diffutils-3.9/share/locale/sr
+/usr/local/cs/diffutils-3.9/share/locale/sr/LC_MESSAGES
+/usr/local/cs/diffutils-3.9/share/locale/sv
+/usr/local/cs/diffutils-3.9/share/locale/sv/LC_MESSAGES
+/usr/local/cs/diffutils-3.9/share/locale/tr
+/usr/local/cs/diffutils-3.9/share/locale/tr/LC_MESSAGES
+/usr/local/cs/diffutils-3.9/share/locale/uk
+/usr/local/cs/diffutils-3.9/share/locale/uk/LC_MESSAGES
+/usr/local/cs/diffutils-3.9/share/locale/vi
+/usr/local/cs/diffutils-3.9/share/locale/vi/LC_MESSAGES
+/usr/local/cs/diffutils-3.9/share/locale/zh_CN
+/usr/local/cs/diffutils-3.9/share/locale/zh_CN/LC_MESSAGES
+/usr/local/cs/diffutils-3.9/share/locale/zh_TW
+/usr/local/cs/diffutils-3.9/share/locale/zh_TW/LC_MESSAGES
+/usr/local/cs/share/info
+/usr/local/cs/share/man/man1
+/usr/local/cs/src
+/usr/local/cs/src/python
+/usr/local/cs/src/python/RCS
+/usr/local/cs/src/diffutils
+/usr/local/cs/src/diffutils/RCS
+/usr/local/cs/src/wget2
+/usr/local/cs/.del
+/usr/local/cs/.del/diffutils-3.8
+/usr/local/cs/.del/texinfo-6.8
+/usr/local/cs/.del/ocaml-4.14.0
+
+
+7.
+
+12
+
+/usr/local/cs/wget2-2.0.1/lib/libwget.so.1
+/usr/local/cs/wget2-2.0.1/lib/libwget.so
+/usr/local/cs/bin/wget2
+/usr/local/cs/bin/cmp
+/usr/local/cs/bin/diff
+/usr/local/cs/bin/diff3
+/usr/local/cs/bin/sdiff
+/usr/local/cs/share/info/diffutils.info
+/usr/local/cs/share/man/man1/cmp.1
+/usr/local/cs/share/man/man1/diff.1
+/usr/local/cs/share/man/man1/diff3.1
+/usr/local/cs/share/man/man1/sdiff.1
+
+
+8.
+
+9.
+
+transpose-chars
+transpose-lines
+transpose-paragraphs
+transpose-sentences
+transpose-sexps
+transpose-words
+
+10.
+
+C-y
+
+yank is an interactive compiled Lisp function in ‘simple.el’.
+
+It is bound to C-y, <S-insertchar>, <S-insert>, <menu-bar> <edit>
+<paste>.
+
+(yank &optional ARG)
+
+Reinsert ("paste") the last stretch of killed text.
+More precisely, reinsert the most recent kill, which is the
+stretch of killed text most recently killed OR yanked.  Put point
+at the end, and set mark at the beginning without activating it.
+With just C-u as argument, put point at beginning, and mark at end.
+With argument N, reinsert the Nth most recent kill.
+
+
+11.
+
+
+
+12.
+
+classlhz 2261942 2261916  0 19:48 ?        00:00:00       sshd: classlhz@pts/3
+classlhz 2261944 2261942  0 19:48 pts/3    00:00:00         -bash
+classlhz 2263116 2261944  0 20:21 pts/3    00:00:00           ps -efH
+
+
+
+
+
+
+ tr -cs '[:alnum:][:punct:]' '[\n*]' | sort -u | comm -23 - sorted.words
+
+
+
