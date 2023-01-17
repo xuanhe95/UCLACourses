@@ -1,0 +1,3 @@
+﻿  Source.cpp
+C:\Users\zhang\Documents\Github\CS31\WS4\WS4\Source.cpp(25,20): warning C4018: '<': signed/unsigned mismatch
+  WS4.vcxproj -> C:\Users\zhang\Documents\Github\CS31\WS4\Debug\WS4.exe

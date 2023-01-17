@@ -1,0 +1,61 @@
+Zero as a divisor:
+	input:
+		0, 1, 1
+	output:
+		inf% say they will vote for Gavin.
+		inf% say they will vote for Brian.
+		Brian is predicted to win the election.
+
+	The results are infinite.
+
+Exceed intger's range:
+	input:
+		999999999999, 1, 1
+	output:
+		How many of them say they will vote for Gavin? How many of them say they will vote for Brian?
+		-10.3% say they will vote for Gavin.
+		-10.3% say they will vote for Brian.
+		Gavin is predicted to win the election.
+
+	The results are wrong.
+
+Exceed 100%:
+	input:
+		120, 200, 200
+	output:
+		166.7% say they will vote for Gavin.
+		166.7% say they will vote for Brian.
+		Brian is predicted to win the election.
+
+	The results are beyond 100%.
+
+Negative output:
+	input:
+		-10, 10, 10
+	output:
+		-100.0% say they will vote for Gavin.
+		-100.0% say they will vote for Brian.
+		Brian is predicted to win the election.
+
+	The results are negative.
+
+Logic error:
+	The comparison symbol was changed, thus the program will output opposite results.
+	For example, if we input 1000, 100, and 10, the output would be:
+
+		10.0% say they will vote for Gavin.
+		1.0% say they will vote for Brian.
+		Brian is predicted to win the election.
+
+	However, Gavin gets more votes than Brian.
+
+Compile error:
+	1. The type of the variable pctGavin is wrong. Therefore, the compiler cannot convert double type to string type.
+	2. Miss a semicolon at line 21.
+	3. The name of the variable in line 28 is wrong. Since C++ is case-sensitive, the variable pctbrian is undefined.
+
+
+
+
+	
+

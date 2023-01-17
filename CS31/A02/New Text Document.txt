@@ -1,0 +1,5 @@
+
+cin.ignore();
+getline(cin, occupation);
+
+I forget use the cin.ignore() method. Therefore, it shows wrong result.

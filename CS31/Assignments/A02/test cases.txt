@@ -1,0 +1,254 @@
+void, 2000, no, 2
+
+Enter your name:
+
+Enter your taxable income:
+2000
+Enter your occupation:
+no
+Enter your children:
+2
+Name:
+Taxable income: 2000.00
+Occupation: no
+Number of children: 2
+---
+You must enter a name
+
+Jo Jo, -10, no, 1
+
+
+Enter your name:
+Jo Jo
+Enter your taxable income:
+-10
+Enter your occupation:
+no
+Enter your children:
+1
+Name: Jo Jo
+Taxable income: -10.00
+Occupation: no
+Number of children: 1
+---
+The taxable income must not be negative
+
+Eric Wang, 0, void, -2
+Jo Jo, 1000, teacher, -3
+
+
+Enter your name:
+Eirc Wang
+Enter your taxable income:
+1000
+Enter your occupation:
+teacher
+Enter your children:
+-3
+Name: Eirc Wang
+Taxable income: 1000.00
+Occupation: teacher
+Number of children: -3
+---
+The number of children must not be negative
+
+
+Jean Su, 45678, nurse, 2
+
+
+Enter your name:
+Jean Su
+Enter your taxable income:
+45678
+Enter your occupation:
+nurse
+Enter your children:
+2
+Name: Jean Su
+Taxable income: 45678.00
+Occupation: nurse
+Number of children: 2
+---
+Jean Su would pay $1427.12
+
+
+Jean Su, 42000, teacher, 5
+
+
+Enter your name:
+Jean Su
+Enter your taxable income:
+42000
+Enter your occupation:
+teacher
+Enter your children:
+5
+Name: Jean Su
+Taxable income: 42000.00
+Occupation: teacher
+Number of children: 5
+---
+Jean Su would pay $680.00
+
+Jean Su, 77777, nurse, 4
+
+Enter your name:
+Jean Su
+Enter your taxable income:
+77777
+Enter your occupation:
+nurse
+Enter your children:
+4
+Name: Jean Su
+Taxable income: 77777.00
+Occupation: nurse
+Number of children: 4
+---
+Jean Su would pay $2538.85
+
+
+Jean Su, 88888, teacher, 5
+
+
+Enter your name:
+Jean Su
+Enter your taxable income:
+88888
+Enter your occupation:
+teacher
+Enter your children:
+5
+Name: Jean Su
+Taxable income: 88888.00
+Occupation: teacher
+Number of children: 5
+---
+Jean Su would pay $2894.40
+
+
+Jean Su, 156789, techer, 20
+
+
+Enter your name:
+Jean Su
+Enter your taxable income:
+156789
+Enter your occupation:
+teacher
+Enter your children:
+20
+Name: Jean Su
+Taxable income: 156789.00
+Occupation: teacher
+Number of children: 20
+---
+Jean Su would pay $8656.38
+
+
+Bob Kai, 78000, engineer, 4
+
+Enter your name:
+Bob Kai
+Enter your taxable income:
+78000
+Enter your occupation:
+engineer
+Enter your children:
+4
+Name: Bob Kai
+Taxable income: 78000.00
+Occupation: engineer
+Number of children: 4
+---
+Bob Kai would pay $3010.00
+
+Bob Kai, 150000, worker, 1000
+
+
+Enter your name:
+Bob Kai
+Enter your taxable income:
+150000
+Enter your occupation:
+worker
+Enter your children:
+1000
+Name: Bob Kai
+Taxable income: 150000.00
+Occupation: worker
+Number of children: 1000
+---
+Bob Kai would pay $9425.00
+
+
+Jo Jo, 55000, no, 0
+
+
+Enter your name:
+Jo Jo
+Enter your taxable income:
+55000
+Enter your occupation:
+no
+Enter your children:
+0
+Name: Jo Jo
+Taxable income: 55000.00
+Occupation: no
+Number of children: 0
+---
+Jo Jo would pay $2200.00
+
+Jo Jo, 125000, no, 0
+
+
+Enter your name:
+Jo Jo
+Enter your taxable income:
+125000
+Enter your occupation:
+no
+Enter your children:
+0
+Name: Jo Jo
+Taxable income: 125000.00
+Occupation: no
+Number of children: 0
+---
+Jo Jo would pay $7100.00
+
+Jo Jo, 55000, no, 2
+
+Enter your name:
+Jo Jo
+Enter your taxable income:
+55000
+Enter your occupation:
+no
+Enter your children:
+2
+Name: Jo Jo
+Taxable income: 55000.00
+Occupation: no
+Number of children: 2
+---
+Jo Jo would pay $1800.00
+
+Jo Jo, 125000, no, 2
+
+Enter your name:
+Jo Jo
+Enter your taxable income:
+125000
+Enter your occupation:
+no
+Enter your children:
+2
+Name: Jo Jo
+Taxable income: 125000.00
+Occupation: no
+Number of children: 2
+---
+Jo Jo would pay $7100.00
+
