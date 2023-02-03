@@ -1,0 +1,64 @@
+Chenda Duan UID 305377128
+Exercise 2.1
+For start scratch buffer, I type "C-x b *scratch*"(actually I can also hit enter directly)
+
+To compute 2**(3**4)), I type "(expt 2 (expt 3 4))" and then type "C-j" to get the result, the result is 2417851639229258349412352
+
+To compute if it fits the 64-bit signed integer, I simply type "(< (expt 3 4) 63)", because the maximum number the 64-bit signed integer can handle is 2^63, and we just need to compare the size of the exponent
+(alternative solution could be directly compare the number with 2^23, which is "(< (expt 2 (expt 3 4)) (expt 2 63))"
+
+Similarly, I type "M-:" and then type "(expt 2 (expt 3 4))" could compute the result, the output is: 
+2417851639229258349412352 (#o1000000000000000000000000000,#x200000000000000000000)
+
+Type "C-h b" will provide a list of all defined keys, I can use "C-s" to search for specific keybindings.
+"C-h k" stands for "describe-key"
+"M-SPC" stands for "just-one-space"
+
+Type "C-h k C-h k" will also print the documents that explains the function of "C-h k", similar to previous. Because "C-h k" simply describe the key that you type, so type it twice will print the function of itself.
+Function: Display documentation of the function invoked by KEY-LIST.
+
+
+Type "C-h k M-SPC" will print the documents that explains the function of "M-SPC", which is similar
+Function:Delete all spaces and tabs around point, leaving one space (or N spaces).
+
+Test "M-SPC" on the scratch buffer, it will reduce the bunch of spaces near the pointer to 1
+For example
+A     A
+will be
+A A
+k
+
+Viewing the source code for "M-SPC", I see the code, the just-one-space function has following code
+(cycle-spacing n nil 'single-shot)
+I test it on the scratch buffer, first use "M-: (just-one-space 1)", this also delete any extra space and just leave one, which is the same as M-SPC, I can also change 1 to 2 in order to leave two space, and so on.
+I then test "M-: (cycle-spacing n nil 'single-shot)", still, I can change n to 1 get similar performance as M-SPC
+
+I then test "M-x just-one-space" and "M-x cycle-spacing" and by default they perform the same as "M-SPC"
+
+
+
+
+
+Exercise2.2
+M-x what-line will print the current line that i am in.
+
+
+
+
+
+Python
+When I run "python randline.py /dev/null", an Index Error was reported
+"return seq[int(self.random() * len(seq))]  # raises IndexError if seq is empty
+IndexError: list index out of range"
+This is because the file /dev/null is empty, and the the landline will report error if the file is empty and thus cause the seq to be empty
+
+When I run "python3 landline.py -h", and syntax error was reported
+"except IOError as (errno, strerror):
+                      ^
+SyntaxError: invalid syntax"
+This is because this notation is valid in python2 but invalid in python3, thus cause the syntax error
+
+When my shuf.py is evoked by python2, there is a type error
+"allow_abbrev=False
+TypeError: __init__() got an unexpected keyword argument 'allow_abbrev'"
+Because I use the argument allow-abbrev to prohibit the abbreviation, but seems like python2 does not support this argument.

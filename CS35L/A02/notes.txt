@@ -1,0 +1,227 @@
+1.
+
+COMMAND:
+
+(* (expt 2 (- 607 1)) (- (expt 2 607) 1 ))
+
+C-j
+
+
+RESULT:
+
+141053783706712069063207958086063189881486743514715667838838675999954867742652380114104193329037690251561950568709829327164087724366370087116731268159313652487450652439805877296207297446723295166658228846926807786652870188920867879451478364569313922060370695064736073572378695176473055266826253284886383715072974324463835300053138429460296575143368065570759537328128
+
+
+
+2.
+十进制转二进制计算位数
+（）
+
+3.
+
+
+C-h k           describe-key
+M-SPC           just-one-space
+
+
+
+describe-key is an interactive compiled Lisp function in ‘help.el’.
+
+It is bound to C-h k, <f1> k, <help> k, <menu-bar> <help-menu>
+<describe> <describe-key-1>.
+
+(describe-key KEY-LIST &optional BUFFER)
+
+  Probably introduced at or before Emacs version 22.1.
+
+Display documentation of the function invoked by KEY-LIST.
+KEY-LIST can be any kind of a key sequence; it can include keyboard events,
+mouse events, and/or menu events.  When calling from a program,
+pass KEY-LIST as a list of elements (SEQ . RAW-SEQ) where SEQ is
+a key-sequence and RAW-SEQ is its untranslated form.
+
+While reading KEY-LIST interactively, this command temporarily enables
+menu items or tool-bar buttons that are disabled to allow getting help
+on them.
+
+BUFFER is the buffer in which to lookup those keys; it defaults to the
+current buffer.
+
+[back]
+
+
+
+C-h k command is binding with describe-key function, which will display documentation of the function invoked by KEY-LIST.
+We pass "C-h k" to the command so it will dispaly the documentation of it.
+
+
+================================================================================
+
+C-h k M-SPC
+
+
+M-SPC runs the command just-one-space (found in global-map), which is
+an interactive compiled Lisp function in ‘simple.el’.
+
+It is bound to M-SPC.
+
+(just-one-space &optional N)
+
+  Probably introduced at or before Emacs version 22.1.
+
+Delete all spaces and tabs around point, leaving one space (or N spaces).
+If N is negative, delete newlines as well, leaving -N spaces.
+See also ‘cycle-spacing’.
+
+[back]
+
+=================================================================================
+
+
+C-h k command is binding with describe-key function, which will display documentation of the function invoked by KEY-LIST.
+We pass "M-SPC" to the command so it will dispaly the documentation of it.
+M-SPC could delete all spaces and tabs around point, leaving one or N (variable N) spaces.
+
+
+
+
+
+
+
+
+14105378370671206906320795808606318988148674351471566783883867599995486774265238011410419332903\
+76902515619505687098293271640877243663700871167312681593136524874506524398058772962072974467232\
+95166658228846926807786652870188920867879451478364569313922060370695064736073572378695176473055\
+266826253284886383715072974324463835300053138429460296575143368065570759537328128 (#o1777777777\
+77777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777\
+77777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777\
+77700000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000\
+00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000\
+000000000000000, #x1fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff\
+ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffc000000000000000000\
+00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000\
+00000000000000000000000000000000000000)
+
+
+
+ENT on ‘simple.el’
+
+
+  (interactive "*P")
+  (let ((orig-pos (point)))
+    (delete-region
+     (if backward-only
+         orig-pos
+       (progn
+         (skip-chars-forward " \t")
+         (constrain-to-field nil orig-pos t)))
+     (progn
+       (skip-chars-backward " \t")
+       (constrain-to-field nil orig-pos)))))
+
+(defun just-one-space (&optional n)
+  "Delete all spaces and tabs around point, leaving one space (or N spaces).
+If N is negative, delete newlines as well, leaving -N spaces.
+See also `cycle-spacing'."
+  (interactive "*p")
+  (cycle-spacing n nil 'single-shot))
+
+(defvar cycle-spacing--context nil
+  "Store context used in consecutive calls to `cycle-spacing' command.
+The first time `cycle-spacing' runs, it saves in this variable:
+its N argument, the original point position, and the original spacing
+around point.")
+
+
+
+
+M-: RET
+(just-one-space)
+
+If will leave just one space around point.
+If I use (just-one-space 3), it will leave 3 spaces.
+(just-one-space N) will leave N spaces, where N represents a number.
+
+
+
+
+
+
+2.2
+
+
+Original Code ====================
+
+“M-x what-line” tells me which line my point on.
+
+
+
+(defun what-line ()
+  "Print the current buffer line number and narrowed line number of point."
+  (interactive)
+  (let ((start (point-min))
+        (n (line-number-at-pos)))
+    (if (= start 1)
+        (message "Line %d" n)
+      (save-excursion
+        (save-restriction
+          (widen)
+          (message "line %d (narrowed line %d)"
+                   (+ n (line-number-at-pos start) -1) n))))))
+
+My Code ===========================
+
+(defun gps-line ()
+  "Print the current buffer line number and narrowed line number of point."
+  (interactive)
+  (let ((start (point-min))
+        (n (line-number-at-pos)))
+    (if (= start 1)
+        (message "Line %d/106" n)
+      (save-excursion
+        (save-restriction
+          (widen)
+          (message "line %d (narrowed line %d)"
+                   (+ n (line-number-at-pos start) -1) n))))))
+
+
+
+M-x load-file gps-line.el RET
+
+Loading /u/eng/class/classlhz/gps-line.el (source)...done
+
+
+
+Homework
+
+1.
+
+[classlhz@lnxsrv11 ~/CS35/A02]$ python2 script.py /dev/null
+Traceback (most recent call last):
+  File "script.py", line 70, in <module>
+    main()
+  File "script.py", line 64, in main
+    sys.stdout.write(generator.chooseline())
+  File "script.py", line 34, in chooseline
+    return random.choice(self.lines)
+  File "/usr/lib64/python2.7/random.py", line 277, in choice
+    return seq[int(self.random() * len(seq))]  # raises IndexError if seq is empty
+IndexError: list index out of range
+
+2.
+
+[classlhz@lnxsrv11 ~/CS35/A02]$ python3 script.py /dev/null
+  File "/w/home.14/class/classlhz/CS35/A02/script.py", line 65
+    except IOError as (errno, strerror):
+                      ^
+SyntaxError: invalid syntax
+
+
+
+
+
+
+
+
+
+

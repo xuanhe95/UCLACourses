@@ -1,0 +1,632 @@
+Lab 1.1:
+
+8.
+Use these commands to use fewer keystrokes
+
+C-s search forward
+C-r search backward
+C-a start of the line
+C-e end of the line
+M-f move to another word forward
+M-b move to another word backward
+C-v view forward screen
+M-v view backward screen
+C-p move to previous line
+C-n move to next line
+
+Lab 1.4:
+
+8. There are 6 instances of <ol>
+
+Lab 1.5:
+
+1.
+
+========================================================COMMAND================================================================
+
+[classlhz@lnxsrv11 ~]$ which sh
+
+========================================================RESULT=================================================================
+
+/usr/bin/sh
+
+========================================================COMMAND================================================================
+
+[classlhz@lnxsrv11 ~]$ which sleep
+
+========================================================RESULT=================================================================
+
+/usr/local/cs/bin/sleep
+
+========================================================COMMAND================================================================
+
+[classlhz@lnxsrv11 ~]$ which type
+
+========================================================RESULT=================================================================
+
+/usr/bin/type
+
+2.
+
+========================================================COMMAND================================================================
+
+[classlhz@lnxsrv11 ~]$ find /usr/bin -name 'se?'
+
+========================================================RESULT=================================================================
+
+/usr/bin/seq
+/usr/bin/sed
+
+========================================================COMMAND================================================================
+
+[classlhz@lnxsrv11 ~]$ man sed
+
+========================================================RESULT=================================================================
+
+SED(1)                                                   User Commands                                                   SED(1)
+
+NAME
+       sed - stream editor for filtering and transforming text
+
+SYNOPSIS
+       sed [OPTION]... {script-only-if-no-other-script} [input-file]...
+
+DESCRIPTION
+       Sed  is  a  stream  editor.  A stream editor is used to perform basic text transformations on an input stream (a file or
+       input from a pipeline).  While in some ways similar to an editor which permits scripted edits (such as ed), sed works by
+       making only one pass over the input(s), and is consequently more efficient.  But it is sed's ability to filter text in a
+       pipeline which particularly distinguishes it from other types of editors.
+
+       -n, --quiet, --silent
+
+              suppress automatic printing of pattern space
+
+       -e script, --expression=script
+
+              add the script to the commands to be executed
+
+       -f script-file, --file=script-file
+
+              add the contents of script-file to the commands to be executed
+
+       --follow-symlinks
+
+              follow symlinks when processing in place
+
+       -i[SUFFIX], --in-place[=SUFFIX]
+
+              edit files in place (makes backup if SUFFIX supplied)
+
+       -l N, --line-length=N
+
+              specify the desired line-wrap length for the `l' command
+
+       --posix
+
+              disable all GNU extensions.
+
+ Manual page sed(1) line 1 (press h for help or q to quit)
+
+
+========================================================COMMAND================================================================
+
+[classlhz@lnxsrv11 ~]$ man seq
+
+========================================================RESULT=================================================================
+
+
+SEQ(1)                                                   User Commands                                                   SEQ(1)
+
+NAME
+       seq - print a sequence of numbers
+
+SYNOPSIS
+       seq [OPTION]... LAST
+       seq [OPTION]... FIRST LAST
+       seq [OPTION]... FIRST INCREMENT LAST
+
+DESCRIPTION
+       Print numbers from FIRST to LAST, in steps of INCREMENT.
+
+       Mandatory arguments to long options are mandatory for short options too.
+
+       -f, --format=FORMAT
+              use printf style floating-point FORMAT
+
+       -s, --separator=STRING
+              use STRING to separate numbers (default: \n)
+
+       -w, --equal-width
+              equalize width by padding with leading zeroes
+
+       --help display this help and exit
+
+       --version
+              output version information and exit
+
+       If  FIRST  or  INCREMENT  is  omitted,  it defaults to 1.  That is, an omitted INCREMENT defaults to 1 even when LAST is
+       smaller than FIRST.  The sequence of numbers ends when the sum of the current number and INCREMENT would become  greater
+       than LAST.  FIRST, INCREMENT, and LAST are interpreted as floating point values.  INCREMENT is usually positive if FIRST
+       is smaller than LAST, and INCREMENT is usually negative if FIRST is greater than LAST.  INCREMENT must not be 0; none of
+       FIRST,  INCREMENT  and LAST may be NaN.  FORMAT must be suitable for printing one argument of type 'double'; it defaults
+       to %.PRECf if FIRST, INCREMENT, and LAST are all fixed point decimal numbers with maximum precision PREC, and to %g oth‐
+       erwise.
+
+AUTHOR
+       Written by Ulrich Drepper.
+
+REPORTING BUGS
+       GNU coreutils online help: <https://www.gnu.org/software/coreutils/>
+
+3.
+
+========================================================COMMAND================================================================
+
+[classlhz@lnxsrv11 ~]$ realpath /usr/local/cs/bin/emacs
+
+========================================================RESULT=================================================================
+
+/usr/local/cs/emacs-28.2/bin/emacs-28.2 is the file really executed
+
+4.
+
+========================================================COMMAND================================================================
+
+[classlhz@lnxsrv11 ~]$ /usr/bin/gcc --version
+
+========================================================RESULT=================================================================
+gcc (GCC) 8.5.0 20210514 (Red Hat 8.5.0-4)
+Copyright (C) 2018 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+========================================================COMMAND================================================================
+
+[classlhz@lnxsrv11 ~]$ gcc --version
+
+========================================================RESULT=================================================================
+
+gcc (GCC) 12.2.0
+Copyright (C) 2022 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+=========================================================NOTES=================================================================
+
+the first gcc is located in "/usr/bin/gcc"
+the second gcc is located in "/usr/local/cs/bin/gcc"
+since we added "/usr/local/cs/bin" to our $PATH, it will search programs in this path
+
+5.
+
+========================================================COMMAND================================================================
+
+[classlhz@lnxsrv11 ~]$ man chmod
+
+========================================================RESULT=================================================================
+
+CHMOD(1)                                                 User Commands                                                 CHMOD(1)
+
+NAME
+       chmod - change file mode bits
+
+SYNOPSIS
+       chmod [OPTION]... MODE[,MODE]... FILE...
+       chmod [OPTION]... OCTAL-MODE FILE...
+       chmod [OPTION]... --reference=RFILE FILE...
+
+DESCRIPTION
+       This  manual  page documents the GNU version of chmod.  chmod changes the file mode bits of each given file according to
+       mode, which can be either a symbolic representation of changes to make, or an octal number representing the bit  pattern
+       for the new mode bits.
+
+       The  format of a symbolic mode is [ugoa...][[-+=][perms...]...], where perms is either zero or more letters from the set
+       rwxXst, or a single letter from the set ugo.  Multiple symbolic modes can be given, separated by commas.
+
+       A combination of the letters ugoa controls which users' access to the file will be changed: the user who  owns  it  (u),
+       other  users  in  the file's group (g), other users not in the file's group (o), or all users (a).  If none of these are
+       given, the effect is as if (a) were given, but bits that are set in the umask are not affected.
+
+       The operator + causes the selected file mode bits to be added to the existing file mode bits of each file; - causes them
+       to  be removed; and = causes them to be added and causes unmentioned bits to be removed except that a directory's unmen‐
+       tioned set user and group ID bits are not affected.
+
+       The letters rwxXst select file mode bits for the affected users: read (r), write (w), execute (or  search  for  directo‐
+       ries)  (x), execute/search only if the file is a directory or already has execute permission for some user (X), set user
+       or group ID on execution (s), restricted deletion flag or sticky bit (t).  Instead of one or more of these letters,  you
+       can  specify  exactly one of the letters ugo: the permissions granted to the user who owns the file (u), the permissions
+       granted to other users who are members of the file's group (g), and the permissions granted to users that are in neither
+       of the two preceding categories (o).
+
+       A  numeric  mode is from one to four octal digits (0-7), derived by adding up the bits with values 4, 2, and 1.  Omitted
+       digits are assumed to be leading zeros.  The first digit selects the set user ID (4) and set group ID (2) and restricted
+       deletion or sticky (1) attributes.  The second digit selects permissions for the user who owns the file: read (4), write
+       (2), and execute (1); the third selects permissions for other users in the file's group, with the same values;  and  the
+       fourth for other users not in the file's group, with the same values.
+
+       chmod  never  changes the permissions of symbolic links; the chmod system call cannot change their permissions.  This is
+       not a problem since the permissions of symbolic links are never used.  However, for each symbolic  link  listed  on  the
+       command  line,  chmod changes the permissions of the pointed-to file.  In contrast, chmod ignores symbolic links encoun‐
+ Manual page chmod(1) line 1 (press h for help or q to quit)
+
+=========================================================NOTES=================================================================
+
+u(the user who own it)
++(selected file mode bits to be added to the existing file mode bits of each file)
+s(set user or group ID on execution)
+x(execute(or search for directories))
+
+o(other users not in the file's group)
+-(remove selected file mode bits)
+w(write)
+
+Add "set user or group ID on execution" and "execute(or search for directories)" to the user who own it.
+Remove write file mode bit from other users not in the file's group
+
+6.
+
+========================================================COMMAND================================================================
+
+[classlhz@lnxsrv11 ~]$ find /usr/local/cs -mtime -8 -type d
+
+========================================================RESULT=================================================================
+
+/usr/local/cs
+/usr/local/cs/wget2-2.0.1
+/usr/local/cs/wget2-2.0.1/include
+/usr/local/cs/wget2-2.0.1/lib
+/usr/local/cs/wget2-2.0.1/lib/pkgconfig
+/usr/local/cs/wget2-2.0.1/bin
+/usr/local/cs/wget2-2.0.1/share
+/usr/local/cs/wget2-2.0.1/share/locale
+/usr/local/cs/wget2-2.0.1/share/locale/ca
+/usr/local/cs/wget2-2.0.1/share/locale/ca/LC_MESSAGES
+/usr/local/cs/wget2-2.0.1/share/locale/cs
+/usr/local/cs/wget2-2.0.1/share/locale/cs/LC_MESSAGES
+/usr/local/cs/wget2-2.0.1/share/locale/de
+/usr/local/cs/wget2-2.0.1/share/locale/de/LC_MESSAGES
+/usr/local/cs/wget2-2.0.1/share/locale/eo
+/usr/local/cs/wget2-2.0.1/share/locale/eo/LC_MESSAGES
+/usr/local/cs/wget2-2.0.1/share/locale/es
+/usr/local/cs/wget2-2.0.1/share/locale/es/LC_MESSAGES
+/usr/local/cs/wget2-2.0.1/share/locale/et
+/usr/local/cs/wget2-2.0.1/share/locale/et/LC_MESSAGES
+/usr/local/cs/wget2-2.0.1/share/locale/fi
+/usr/local/cs/wget2-2.0.1/share/locale/fi/LC_MESSAGES
+/usr/local/cs/wget2-2.0.1/share/locale/fr
+/usr/local/cs/wget2-2.0.1/share/locale/fr/LC_MESSAGES
+/usr/local/cs/wget2-2.0.1/share/locale/ga
+/usr/local/cs/wget2-2.0.1/share/locale/ga/LC_MESSAGES
+/usr/local/cs/wget2-2.0.1/share/locale/hr
+/usr/local/cs/wget2-2.0.1/share/locale/hr/LC_MESSAGES
+/usr/local/cs/wget2-2.0.1/share/locale/hu
+/usr/local/cs/wget2-2.0.1/share/locale/hu/LC_MESSAGES
+/usr/local/cs/wget2-2.0.1/share/locale/id
+/usr/local/cs/wget2-2.0.1/share/locale/id/LC_MESSAGES
+/usr/local/cs/wget2-2.0.1/share/locale/it
+/usr/local/cs/wget2-2.0.1/share/locale/it/LC_MESSAGES
+/usr/local/cs/wget2-2.0.1/share/locale/ja
+/usr/local/cs/wget2-2.0.1/share/locale/ja/LC_MESSAGES
+/usr/local/cs/wget2-2.0.1/share/locale/nb
+/usr/local/cs/wget2-2.0.1/share/locale/nb/LC_MESSAGES
+/usr/local/cs/wget2-2.0.1/share/locale/nl
+/usr/local/cs/wget2-2.0.1/share/locale/nl/LC_MESSAGES
+/usr/local/cs/wget2-2.0.1/share/locale/pl
+/usr/local/cs/wget2-2.0.1/share/locale/pl/LC_MESSAGES
+/usr/local/cs/wget2-2.0.1/share/locale/pt_BR
+/usr/local/cs/wget2-2.0.1/share/locale/pt_BR/LC_MESSAGES
+/usr/local/cs/wget2-2.0.1/share/locale/ro
+/usr/local/cs/wget2-2.0.1/share/locale/ro/LC_MESSAGES
+/usr/local/cs/wget2-2.0.1/share/locale/ru
+/usr/local/cs/wget2-2.0.1/share/locale/ru/LC_MESSAGES
+/usr/local/cs/wget2-2.0.1/share/locale/sk
+/usr/local/cs/wget2-2.0.1/share/locale/sk/LC_MESSAGES
+/usr/local/cs/wget2-2.0.1/share/locale/sr
+/usr/local/cs/wget2-2.0.1/share/locale/sr/LC_MESSAGES
+/usr/local/cs/wget2-2.0.1/share/locale/sv
+/usr/local/cs/wget2-2.0.1/share/locale/sv/LC_MESSAGES
+/usr/local/cs/wget2-2.0.1/share/locale/tr
+/usr/local/cs/wget2-2.0.1/share/locale/tr/LC_MESSAGES
+/usr/local/cs/wget2-2.0.1/share/locale/uk
+/usr/local/cs/wget2-2.0.1/share/locale/uk/LC_MESSAGES
+/usr/local/cs/wget2-2.0.1/share/locale/vi
+/usr/local/cs/wget2-2.0.1/share/locale/vi/LC_MESSAGES
+/usr/local/cs/wget2-2.0.1/share/locale/zh_CN
+/usr/local/cs/wget2-2.0.1/share/locale/zh_CN/LC_MESSAGES
+/usr/local/cs/bin
+/usr/local/cs/diffutils-3.9
+/usr/local/cs/diffutils-3.9/bin
+/usr/local/cs/diffutils-3.9/share
+/usr/local/cs/diffutils-3.9/share/info
+/usr/local/cs/diffutils-3.9/share/man
+/usr/local/cs/diffutils-3.9/share/man/man1
+/usr/local/cs/diffutils-3.9/share/locale
+/usr/local/cs/diffutils-3.9/share/locale/bg
+/usr/local/cs/diffutils-3.9/share/locale/bg/LC_MESSAGES
+/usr/local/cs/diffutils-3.9/share/locale/ca
+/usr/local/cs/diffutils-3.9/share/locale/ca/LC_MESSAGES
+/usr/local/cs/diffutils-3.9/share/locale/cs
+/usr/local/cs/diffutils-3.9/share/locale/cs/LC_MESSAGES
+/usr/local/cs/diffutils-3.9/share/locale/da
+/usr/local/cs/diffutils-3.9/share/locale/da/LC_MESSAGES
+/usr/local/cs/diffutils-3.9/share/locale/de
+/usr/local/cs/diffutils-3.9/share/locale/de/LC_MESSAGES
+/usr/local/cs/diffutils-3.9/share/locale/el
+/usr/local/cs/diffutils-3.9/share/locale/el/LC_MESSAGES
+/usr/local/cs/diffutils-3.9/share/locale/eo
+/usr/local/cs/diffutils-3.9/share/locale/eo/LC_MESSAGES
+/usr/local/cs/diffutils-3.9/share/locale/es
+/usr/local/cs/diffutils-3.9/share/locale/es/LC_MESSAGES
+/usr/local/cs/diffutils-3.9/share/locale/fi
+/usr/local/cs/diffutils-3.9/share/locale/fi/LC_MESSAGES
+/usr/local/cs/diffutils-3.9/share/locale/fr
+/usr/local/cs/diffutils-3.9/share/locale/fr/LC_MESSAGES
+/usr/local/cs/diffutils-3.9/share/locale/ga
+/usr/local/cs/diffutils-3.9/share/locale/ga/LC_MESSAGES
+/usr/local/cs/diffutils-3.9/share/locale/gl
+/usr/local/cs/diffutils-3.9/share/locale/gl/LC_MESSAGES
+/usr/local/cs/diffutils-3.9/share/locale/he
+/usr/local/cs/diffutils-3.9/share/locale/he/LC_MESSAGES
+/usr/local/cs/diffutils-3.9/share/locale/hr
+/usr/local/cs/diffutils-3.9/share/locale/hr/LC_MESSAGES
+/usr/local/cs/diffutils-3.9/share/locale/hu
+/usr/local/cs/diffutils-3.9/share/locale/hu/LC_MESSAGES
+/usr/local/cs/diffutils-3.9/share/locale/id
+/usr/local/cs/diffutils-3.9/share/locale/id/LC_MESSAGES
+/usr/local/cs/diffutils-3.9/share/locale/it
+/usr/local/cs/diffutils-3.9/share/locale/it/LC_MESSAGES
+/usr/local/cs/diffutils-3.9/share/locale/ja
+/usr/local/cs/diffutils-3.9/share/locale/ja/LC_MESSAGES
+/usr/local/cs/diffutils-3.9/share/locale/ka
+/usr/local/cs/diffutils-3.9/share/locale/ka/LC_MESSAGES
+/usr/local/cs/diffutils-3.9/share/locale/ko
+/usr/local/cs/diffutils-3.9/share/locale/ko/LC_MESSAGES
+/usr/local/cs/diffutils-3.9/share/locale/lv
+/usr/local/cs/diffutils-3.9/share/locale/lv/LC_MESSAGES
+/usr/local/cs/diffutils-3.9/share/locale/ms
+/usr/local/cs/diffutils-3.9/share/locale/ms/LC_MESSAGES
+/usr/local/cs/diffutils-3.9/share/locale/nb
+/usr/local/cs/diffutils-3.9/share/locale/nb/LC_MESSAGES
+/usr/local/cs/diffutils-3.9/share/locale/nl
+/usr/local/cs/diffutils-3.9/share/locale/nl/LC_MESSAGES
+/usr/local/cs/diffutils-3.9/share/locale/pl
+/usr/local/cs/diffutils-3.9/share/locale/pl/LC_MESSAGES
+/usr/local/cs/diffutils-3.9/share/locale/pt
+/usr/local/cs/diffutils-3.9/share/locale/pt/LC_MESSAGES
+/usr/local/cs/diffutils-3.9/share/locale/pt_BR
+/usr/local/cs/diffutils-3.9/share/locale/pt_BR/LC_MESSAGES
+/usr/local/cs/diffutils-3.9/share/locale/ro
+/usr/local/cs/diffutils-3.9/share/locale/ro/LC_MESSAGES
+/usr/local/cs/diffutils-3.9/share/locale/ru
+/usr/local/cs/diffutils-3.9/share/locale/ru/LC_MESSAGES
+/usr/local/cs/diffutils-3.9/share/locale/sr
+/usr/local/cs/diffutils-3.9/share/locale/sr/LC_MESSAGES
+/usr/local/cs/diffutils-3.9/share/locale/sv
+/usr/local/cs/diffutils-3.9/share/locale/sv/LC_MESSAGES
+/usr/local/cs/diffutils-3.9/share/locale/tr
+/usr/local/cs/diffutils-3.9/share/locale/tr/LC_MESSAGES
+/usr/local/cs/diffutils-3.9/share/locale/uk
+/usr/local/cs/diffutils-3.9/share/locale/uk/LC_MESSAGES
+/usr/local/cs/diffutils-3.9/share/locale/vi
+/usr/local/cs/diffutils-3.9/share/locale/vi/LC_MESSAGES
+/usr/local/cs/diffutils-3.9/share/locale/zh_CN
+/usr/local/cs/diffutils-3.9/share/locale/zh_CN/LC_MESSAGES
+/usr/local/cs/diffutils-3.9/share/locale/zh_TW
+/usr/local/cs/diffutils-3.9/share/locale/zh_TW/LC_MESSAGES
+/usr/local/cs/share/info
+/usr/local/cs/share/man/man1
+/usr/local/cs/src
+/usr/local/cs/src/python
+/usr/local/cs/src/python/RCS
+/usr/local/cs/src/diffutils
+/usr/local/cs/src/diffutils/RCS
+/usr/local/cs/src/wget2
+/usr/local/cs/.del
+/usr/local/cs/.del/diffutils-3.8
+/usr/local/cs/.del/texinfo-6.8
+/usr/local/cs/.del/ocaml-4.14.0
+
+
+7.
+
+========================================================COMMAND================================================================
+
+[classlhz@lnxsrv11 ~]$ which find
+
+========================================================RESULT=================================================================
+
+/usr/bin/find
+
+========================================================COMMAND================================================================
+
+[classlhz@lnxsrv11 ~]$ find /usr/bin -type l | wc -l
+
+========================================================RESULT=================================================================
+
+327
+
+
+8.
+
+========================================================COMMAND================================================================
+
+[classlhz@lnxsrv11 ~]$ ls -lta /usr/lib64
+
+========================================================RESULT=================================================================
+
+lrwxrwxrwx.   1 root root       15 Aug 12  2018 libbz2.so.1 -> libbz2.so.1.0.6
+
+========================================================NOTE==================================================================
+
+libbz2.so.1.0.6
+
+
+
+9.
+
+========================================================COMMAND================================================================
+
+emcas RET
+C-h ? a transpose RET
+
+========================================================RESULT=================================================================
+
+
+transpose-chars               C-t
+   Interchange characters around point, moving forward one character.
+transpose-lines               C-x C-t
+   Exchange current line and previous line, leaving point after both.
+transpose-paragraphs          M-x ... RET
+   Interchange the current paragraph with the next one.
+transpose-sentences           M-x ... RET
+   Interchange the current sentence with the next one.
+transpose-sexps               C-M-t
+   Like \[transpose-chars] (`transpose-chars'), but applies to sexps.
+transpose-words               M-t
+   Interchange words around point, leaving point at end of them.
+
+
+10.
+
+========================================================COMMAND================================================================
+
+C-h ? f yank RET
+
+========================================================RESULT=================================================================
+
+yank is an interactive compiled Lisp function in ‘simple.el’.
+
+It is bound to C-y, <S-insertchar>, <S-insert>, <menu-bar> <edit>
+<paste>.
+
+(yank &optional ARG)
+
+Reinsert ("paste") the last stretch of killed text.
+More precisely, reinsert the most recent kill, which is the
+stretch of killed text most recently killed OR yanked.  Put point
+at the end, and set mark at the beginning without activating it.
+With just C-u as argument, put point at beginning, and mark at end.
+With argument N, reinsert the Nth most recent kill.
+
+
+=========================================================NOTES=================================================================
+
+Keystoke:	C-y
+
+
+
+11.
+
+========================================================COMMAND================================================================
+
+[classlhz@lnxsrv11 ~]$ ls -l /usr/bin
+
+========================================================RESULT=================================================================
+
+total 373756
+-rwxr-xr-x  1 root root       54840 Jul  9  2021 [
+-rwxr-xr-x  1 root root       13368 Dec  4  2018 411toppm
+lrwxrwxrwx. 1 root root           6 Sep 19  2018 a2x -> a2x.py
+-rwxr-xr-x. 1 root root       37017 Sep 19  2018 a2x.py
+-rwxr-xr-x  1 root root       16312 Jun  2  2021 abrt-action-analyze-backtrace
+-rwxr-xr-x  1 root root       16784 Jun  2  2021 abrt-action-analyze-c
+-rwxr-xr-x  1 root root        1311 Jun  2  2021 abrt-action-analyze-ccpp-local
+
+...
+
+
+========================================================COMMAND================================================================
+
+M-x dired /usr/bin RET
+
+========================================================RESULT=================================================================
+
+  /usr/bin:
+  total used in directory 373832 available 6.4 GiB
+  dr-xr-xr-x.  2 root root       69632 Jun 21  2022 .
+  drwxr-xr-x. 16 root root        4096 Dec 17  2021 ..
+  -rwxr-xr-x   1 root root       54840 Jul  9  2021 [
+  -rwxr-xr-x   1 root root       13368 Dec  4  2018 411toppm
+  lrwxrwxrwx.  1 root root           6 Sep 19  2018 a2x -> a2x.py
+  -rwxr-xr-x.  1 root root       37017 Sep 19  2018 a2x.py
+  -rwxr-xr-x   1 root root       16312 Jun  2  2021 abrt-action-analyze-backtrace
+  -rwxr-xr-x   1 root root       16784 Jun  2  2021 abrt-action-analyze-c
+  -rwxr-xr-x   1 root root        1311 Jun  2  2021 abrt-action-analyze-ccpp-local
+
+...
+
+=========================================================NOTES=================================================================
+
+The result from dired contains current directory '.' and parent directory '..' while "ls -l" does not.
+The total used in directory is different.
+The result from dired shows the available storage.
+
+
+12.
+
+========================================================COMMAND================================================================
+
+[classlhz@lnxsrv11 ~]$ ps -f -u classlhz -H
+
+========================================================RESULT=================================================================
+
+UID          PID    PPID  C STIME TTY          TIME CMD
+classlhz 3488055 3487978  0 22:21 ?        00:00:00 sshd: classlhz@pts/77
+classlhz 3488057 3488055  0 22:21 pts/77   00:00:00   -bash
+classlhz 3496772 3488057  0 22:41 pts/77   00:00:00     ps -f -u classlhz -H
+
+
+
+
+Homework:
+
+tr -c 'A-Za-z' '[\n*]'
+
+replace characters other than A - Z and a - z with newlines (-c complement)
+each word take one line
+
+tr -cs 'A-Za-z' '[\n*]'
+
+replace characters other than A - Z and a - z with newlines (-c complement)
+delete consective repeat newlines (-s squeeze-repeats)
+each word take one line
+
+tr -cs 'A-Za-z' '[\n*]' | sort
+
+replace characters other than A - Z and a - z with newlines (-c complement)
+delete consective repeat newlines (-s squeeze-repeats)
+each word take one line
+pipeline output the result to next command
+sort all words (sort)
+
+tr -cs 'A-Za-z' '[\n*]' | sort -u
+
+replace characters other than A - Z and a - z with newlines (-c complement)
+delete consective repeat newlines (-s squeeze-repeats)
+each word take one line
+pipeline output the result to next command
+sort and delete repeat words (-u unique)
+
+tr -cs 'A-Za-z' '[\n*]' | sort -u | comm - sorted.words
+
+replace characters other than A - Z and a - z with newlines (-c complement)
+delete consective repeat newlines (-s squeeze-repeats)
+each word take one line
+pipeline output the result to next command
+sort and delete repeat words (-u unique)
+
+compare two sorted files
+the first column shows contents that only exist in first file
+the second column shows contents that only exist in second file
+the third column shows contents that exist in both files
+
+tr -cs 'A-Za-z' '[\n*]' | sort -u | comm -23 - sorted.words
+
+replace characters other than A - Z and a - z with newlines (-c complement)
+delete consective repeat newlines (-s squeeze-repeats)
+each word take one line
+pipeline output the result to next command
+sort and delete repeat words (-u unique)
+
+compare two sorted files
+the first column shows contents that only exist in first file (-23 do not show contents that only in second file or in both files)

@@ -1,0 +1,80 @@
+Chenda Duan UID 305377128
+1.
+When there are multiple branches, 
+on the upper left window we can see more than one vertical lines 
+as a symbol of branches, 
+and the circle represents each commits. 
+When two branches get merged,
+we can see two lines joining together
+at a circle.
+And that circle represent the merge point.
+
+For example, for the merge point M,
+two commit: improve documentation...
+and "merge from origin/emacs-27"
+merged together.
+So the point M has two parents:
+ffd201c47e8......
+18c0e20bea0.......
+They merged together to form point M.
+The author is Glenn Morris, 
+the time is 2020-10-17.
+
+About the roles of sub-windows:
+
+The upper-left window show the branches
+and commits for this repository. 
+Along with the comments for the commits.
+The blue cycle represent commits, 
+and the yellow cycle represent HEAD,
+which is the current commit.
+We can also see that
+both the local master branch
+and the remote master branch
+point to the HEAD commit.
+
+The upper-middle window shows 
+the author of each commit.
+
+The upper-right window shows
+the time of each commit.
+
+The middle window is about searching.
+We can see the SHAI ID of the commit we select.
+We can also search the commit by changing SHAI ID,
+or by the commit containing specific words.
+On the right we can see the current row number,
+and the total row number.
+
+On the bottom left, there are two separate window
+The bottom-left-up window shows the commit details,
+specifically the commit meta-data, such as
+committer, parent and child, comments.
+
+The bottom-left-down window show the different
+of the commit and the previous commit.
+We can also select "old version" or "new version".
+
+The bottom right shows the file that is impact
+by the commit we selected.
+
+2.
+C is a long-away parent of m(show in the graph)
+and is a commit with comment"A better fix of bug"
+
+3.
+When I download the GNU Emacs git repository 
+by using git clone https://git.savannah.gnu.org/git/emacs.git
+I use git branch and find that my own version only has one branch "master"
+
+But for the "~eggert/src/gnu/emacs"
+I use git branch and there are so many branches.
+Using git branch | wc -l to count,
+there are 179 branches.
+
+So the emacs repo that I download is rather a "formal" repository,
+which is only for users to play around since it only contains the main branch.
+But ~eggert/src/gnu/emacs
+seems to be a full repository, it contains so many branches and commits,
+it is the repository for the real development or maintain for emacs.
+ 

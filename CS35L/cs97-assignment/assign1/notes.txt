@@ -1,0 +1,716 @@
+Chenda Duan UID 305377128
+
+About shell Homework
+I find two possible answers, the key is that linuxwords and sortedwords both contain character that are not part of "A-Za-z", so for the original command, after tr -cs 'A-Za-z', only alphabets are left, but for sortedwords those special characters such as '-' '!' '/' are still there.
+So there are two approaches: modify the first tr -cs to make sure the input file still contain those special character, or modify the sortedwords to eliminate those special character
+tr -cs "A-Za-z0-9-',\!/" '[\n*]'| sort -u | comm -23 - sorted.words
+## this retains all the special character in the inputfile such as ',', '!', '-'
+or
+tr -cs 'A-Za-z' '[\n*]' | sort -u | comm -23 - <(sort -u <(tr -cs 'A-Za-z' '[\n*]' <sorted.words))
+## this modify the sorted.words to only contain alphabet
+
+
+
+
+Answers of lab 1.5
+
+
+1. Using "which mv" and "which sh" to get the result, 
+mv is located in "/usr/local/cs/bin/mv" and sh is located in "/usr/bin/sh"
+
+
+2. I tried to find them by using man -k ^.r, but i don't know how to specify the directory, so I try to use the "find" command, by using "man find" i found following options:
+-type f: File is of type regular files 
+-regex pattern: File  name  matches regular expression pattern.  This is a match on the whole path
+-perm /mode: Any of the permission bits mode are set for the file.
+Using "man chmod" to see the options of mode that perm uses
+a: all users have the access
+x: file mode execute
+So the usable command would be:
+
+"find /usr/bin -type f -perm /a+x -regex '^/usr/bin/.r$'"
+And the results are:
+/usr/bin/tr
+/usr/bin/ar
+/usr/bin/pr
+
+Using "man /usr/bin/tr" or similar approach, we can get the function of them
+/usr/bin/tr: tr - translate or delete characters
+/usr/bin/ar: ar - create, modify, and extract from archives
+/usr/bin/pr: pr - convert text files for printing
+
+
+3. I use "man -k link" to search for appropriate command and find a command named readlink, and using "man readlink" to see the manual and see the option of -f (which follow the symbolic link recursively until the end). So "readlink -f /usr/bin/emacs" gives the real file "/usr/bin/emacs-24.3"
+
+
+4. using "/usr/bin/gcc -v", that version is "gcc version 4.8.5 20150623 (Red Hat 4.8.5-39) (GCC) "
+using "gcc -v", that version is "gcc version 10.2.0 (GCC)"
+They are different programs, using "which gcc" and the actual gcc is "/usr/local/cs/bin/gcc"
+
+
+5. using "man chmod" to see the details, " +  causes the selected file mode bits to be added to the existing file mode bits of each file; - causes them to be removed;". And for u: "the permissions granted to  the  user  who  owns the file"
+s: "set user or group ID on execution"
+x: "execute (or search for directories)"
+w: "write"
+o: "permissions granted  to  users  that are in neither owner of the file or members of the file group"
+
+so "u+sx" means to give the owner of the file the ability to set user or group ID on execution and execute
+"o-w" means to not give the user that are not owner of the file or members of the file group the ability to write
+
+6. Using "man find" to see details
+-mtime n : File's data was last modified n*24 hours ago.
+-type d: Search of the file of type directory
+
+so using "find /usr/local/cs -type d -mtime -28"
+gives the result (i will put it at the end of the file since there are too many, around 580)
+
+7.Similar approach as question 6
+Using "which find", the find is locate at "/usr/bin/find", so we need to search the directory /usr/bin
+for find command, -type l: Search of the file of type symbolic 
+so using "find /usr/bin/ -type l" will list all the symbolic links under that directory
+For counting them, I use "man -k count" to search for appropriate command and found
+wc: print newline, word, and byte counts for each file
+
+so using "find /usr/bin/ -type l | wc -l" will print the number, which is 280
+
+8. Using "man ls" to see the option of ls
+-a: do not ignore files starting with .
+-l: use a long listing format
+-t: sort by time, newest first
+So by using "ls /usr/lib64 -a -l -t"  the result is
+-rwxr-xr-x.   1 root root       19408 Dec 28  2013 librom1394.so.0.3.0
+
+9. Using "man locale", in the file there are several paths, I am not sure what means"get data from" so I list all possible path
+
+Usual default locale archive location: /usr/lib/locale/locale-archive
+Usual default path for locale definition files: /usr/share/i18n/locales
+
+10. I first use "C-h C-h" to search for appropriate command and I found:
+C-h a: Show commands whose name matches the PATTERN 
+
+I use "C-h a" to search for the command "downcase" and the result shows that there are three commands containing downcast:
+
+downcase-dwim : M-x ... RET
+downcase-region: C-x C-l
+downcase-word: M-l
+
+11.I first use C-h C-h to search for appropriate command and I found:
+C-h b:Display all key binding
+I use "C-h b" and type the "C-s C-M-r" to search the result:
+
+C-M-r		isearch-backward-regexp
+C-M-s		isearch-forward-regexp
+C-M-t		transpose-sexps
+C-M-u		backward-up-list
+C-M-v		scroll-other-window
+
+
+
+12. Still use "C-h c C-g"
+C-g runs the command keyboard-quit
+
+To get detailed info, I use "C-h C-h" and find that "C-h k" can " Display the full documentation for the key sequence."
+
+So using "C-h k C-g" to get detailed info:
+C-g:Signal a ‘quit’ condition.
+During execution of Lisp code, this character causes a quit directly.
+At top-level, as an editor command, this simply beeps.
+
+
+13. I use C-h C-h to search for appropriate command and found:
+C-h f: Display documentation for the given function.
+
+I use "C-h f yank" to get the result
+yank: It is bound to C-y
+Reinsert ("paste") the last stretch of killed text.
+More precisely, reinsert the most recent kill, which is the stretch of text most recently killed OR yanked, as returned by ‘current-kill’ (which see).  Put point at the end, and set mark at the beginning without activating it. With just C-u as argument, put point at beginning, and mark at end.
+
+
+14. I use "C-h a" to find that dired is evoked by "C-x d" then I use "C-x d" and type "/usr/bin" in emacs and type "ls /usr/bin -l" in shell to see the difference
+They differed first by the first line, where emacs output "total used in directory 327324 available 10 GiB" whereas shell ls output "total 327240" They differed by both value and format
+Also, emacs first print the two directory "." and "..", and then the third file start to be the same as shell output.
+
+
+
+
+Attached: question 6 output
+/usr/local/cs
+/usr/local/cs/src/bash
+/usr/local/cs/src/bash/RCS
+/usr/local/cs/src/grep
+/usr/local/cs/src/grep/RCS
+/usr/local/cs/src/ocaml
+/usr/local/cs/src/ocaml/RCS
+/usr/local/cs/src/python
+/usr/local/cs/src/python/RCS
+/usr/local/cs/share/info
+/usr/local/cs/share/man/man1
+/usr/local/cs/share/man/man3
+/usr/local/cs/bin
+/usr/local/cs/ocaml-4.11.1
+/usr/local/cs/ocaml-4.11.1/bin
+/usr/local/cs/ocaml-4.11.1/lib
+/usr/local/cs/ocaml-4.11.1/lib/ocaml
+/usr/local/cs/ocaml-4.11.1/lib/ocaml/stublibs
+/usr/local/cs/ocaml-4.11.1/lib/ocaml/compiler-libs
+/usr/local/cs/ocaml-4.11.1/lib/ocaml/caml
+/usr/local/cs/ocaml-4.11.1/lib/ocaml/threads
+/usr/local/cs/ocaml-4.11.1/lib/ocaml/ocamldoc
+/usr/local/cs/ocaml-4.11.1/man
+/usr/local/cs/ocaml-4.11.1/man/man1
+/usr/local/cs/ocaml-4.11.1/man/man3
+/usr/local/cs/bash-5.0.18
+/usr/local/cs/bash-5.0.18/bin
+/usr/local/cs/bash-5.0.18/share
+/usr/local/cs/bash-5.0.18/share/man
+/usr/local/cs/bash-5.0.18/share/man/man1
+/usr/local/cs/bash-5.0.18/share/info
+/usr/local/cs/bash-5.0.18/share/doc
+/usr/local/cs/bash-5.0.18/share/doc/bash
+/usr/local/cs/bash-5.0.18/lib
+/usr/local/cs/bash-5.0.18/lib/bash
+/usr/local/cs/bash-5.0.18/lib/pkgconfig
+/usr/local/cs/bash-5.0.18/include
+/usr/local/cs/bash-5.0.18/include/bash
+/usr/local/cs/bash-5.0.18/include/bash/builtins
+/usr/local/cs/bash-5.0.18/include/bash/include
+/usr/local/cs/grep-3.5
+/usr/local/cs/grep-3.5/share
+/usr/local/cs/grep-3.5/share/locale
+/usr/local/cs/grep-3.5/share/locale/af
+/usr/local/cs/grep-3.5/share/locale/af/LC_MESSAGES
+/usr/local/cs/grep-3.5/share/locale/be
+/usr/local/cs/grep-3.5/share/locale/be/LC_MESSAGES
+/usr/local/cs/grep-3.5/share/locale/bg
+/usr/local/cs/grep-3.5/share/locale/bg/LC_MESSAGES
+/usr/local/cs/grep-3.5/share/locale/ca
+/usr/local/cs/grep-3.5/share/locale/ca/LC_MESSAGES
+/usr/local/cs/grep-3.5/share/locale/cs
+/usr/local/cs/grep-3.5/share/locale/cs/LC_MESSAGES
+/usr/local/cs/grep-3.5/share/locale/da
+/usr/local/cs/grep-3.5/share/locale/da/LC_MESSAGES
+/usr/local/cs/grep-3.5/share/locale/de
+/usr/local/cs/grep-3.5/share/locale/de/LC_MESSAGES
+/usr/local/cs/grep-3.5/share/locale/el
+/usr/local/cs/grep-3.5/share/locale/el/LC_MESSAGES
+/usr/local/cs/grep-3.5/share/locale/eo
+/usr/local/cs/grep-3.5/share/locale/eo/LC_MESSAGES
+/usr/local/cs/grep-3.5/share/locale/es
+/usr/local/cs/grep-3.5/share/locale/es/LC_MESSAGES
+/usr/local/cs/grep-3.5/share/locale/et
+/usr/local/cs/grep-3.5/share/locale/et/LC_MESSAGES
+/usr/local/cs/grep-3.5/share/locale/eu
+/usr/local/cs/grep-3.5/share/locale/eu/LC_MESSAGES
+/usr/local/cs/grep-3.5/share/locale/fi
+/usr/local/cs/grep-3.5/share/locale/fi/LC_MESSAGES
+/usr/local/cs/grep-3.5/share/locale/fr
+/usr/local/cs/grep-3.5/share/locale/fr/LC_MESSAGES
+/usr/local/cs/grep-3.5/share/locale/ga
+/usr/local/cs/grep-3.5/share/locale/ga/LC_MESSAGES
+/usr/local/cs/grep-3.5/share/locale/gl
+/usr/local/cs/grep-3.5/share/locale/gl/LC_MESSAGES
+/usr/local/cs/grep-3.5/share/locale/he
+/usr/local/cs/grep-3.5/share/locale/he/LC_MESSAGES
+/usr/local/cs/grep-3.5/share/locale/hr
+/usr/local/cs/grep-3.5/share/locale/hr/LC_MESSAGES
+/usr/local/cs/grep-3.5/share/locale/hu
+/usr/local/cs/grep-3.5/share/locale/hu/LC_MESSAGES
+/usr/local/cs/grep-3.5/share/locale/id
+/usr/local/cs/grep-3.5/share/locale/id/LC_MESSAGES
+/usr/local/cs/grep-3.5/share/locale/it
+/usr/local/cs/grep-3.5/share/locale/it/LC_MESSAGES
+/usr/local/cs/grep-3.5/share/locale/ja
+/usr/local/cs/grep-3.5/share/locale/ja/LC_MESSAGES
+/usr/local/cs/grep-3.5/share/locale/ko
+/usr/local/cs/grep-3.5/share/locale/ko/LC_MESSAGES
+/usr/local/cs/grep-3.5/share/locale/ky
+/usr/local/cs/grep-3.5/share/locale/ky/LC_MESSAGES
+/usr/local/cs/grep-3.5/share/locale/lt
+/usr/local/cs/grep-3.5/share/locale/lt/LC_MESSAGES
+/usr/local/cs/grep-3.5/share/locale/nb
+/usr/local/cs/grep-3.5/share/locale/nb/LC_MESSAGES
+/usr/local/cs/grep-3.5/share/locale/nl
+/usr/local/cs/grep-3.5/share/locale/nl/LC_MESSAGES
+/usr/local/cs/grep-3.5/share/locale/pa
+/usr/local/cs/grep-3.5/share/locale/pa/LC_MESSAGES
+/usr/local/cs/grep-3.5/share/locale/pl
+/usr/local/cs/grep-3.5/share/locale/pl/LC_MESSAGES
+/usr/local/cs/grep-3.5/share/locale/pt
+/usr/local/cs/grep-3.5/share/locale/pt/LC_MESSAGES
+/usr/local/cs/grep-3.5/share/locale/pt_BR
+/usr/local/cs/grep-3.5/share/locale/pt_BR/LC_MESSAGES
+/usr/local/cs/grep-3.5/share/locale/ro
+/usr/local/cs/grep-3.5/share/locale/ro/LC_MESSAGES
+/usr/local/cs/grep-3.5/share/locale/ru
+/usr/local/cs/grep-3.5/share/locale/ru/LC_MESSAGES
+/usr/local/cs/grep-3.5/share/locale/sk
+/usr/local/cs/grep-3.5/share/locale/sk/LC_MESSAGES
+/usr/local/cs/grep-3.5/share/locale/sl
+/usr/local/cs/grep-3.5/share/locale/sl/LC_MESSAGES
+/usr/local/cs/grep-3.5/share/locale/sr
+/usr/local/cs/grep-3.5/share/locale/sr/LC_MESSAGES
+/usr/local/cs/grep-3.5/share/locale/sv
+/usr/local/cs/grep-3.5/share/locale/sv/LC_MESSAGES
+/usr/local/cs/grep-3.5/share/locale/th
+/usr/local/cs/grep-3.5/share/locale/th/LC_MESSAGES
+/usr/local/cs/grep-3.5/share/locale/tr
+/usr/local/cs/grep-3.5/share/locale/tr/LC_MESSAGES
+/usr/local/cs/grep-3.5/share/locale/uk
+/usr/local/cs/grep-3.5/share/locale/uk/LC_MESSAGES
+/usr/local/cs/grep-3.5/share/locale/vi
+/usr/local/cs/grep-3.5/share/locale/vi/LC_MESSAGES
+/usr/local/cs/grep-3.5/share/locale/zh_CN
+/usr/local/cs/grep-3.5/share/locale/zh_CN/LC_MESSAGES
+/usr/local/cs/grep-3.5/share/locale/zh_TW
+/usr/local/cs/grep-3.5/share/locale/zh_TW/LC_MESSAGES
+/usr/local/cs/grep-3.5/share/man
+/usr/local/cs/grep-3.5/share/man/man1
+/usr/local/cs/grep-3.5/share/info
+/usr/local/cs/grep-3.5/bin
+/usr/local/cs/Python-2.7.18
+/usr/local/cs/Python-2.7.18/include
+/usr/local/cs/Python-2.7.18/include/python2.7
+/usr/local/cs/Python-2.7.18/share
+/usr/local/cs/Python-2.7.18/share/man
+/usr/local/cs/Python-2.7.18/share/man/man1
+/usr/local/cs/Python-2.7.18/lib
+/usr/local/cs/Python-2.7.18/lib/python2.7
+/usr/local/cs/Python-2.7.18/lib/python2.7/lib-dynload
+/usr/local/cs/Python-2.7.18/lib/python2.7/config
+/usr/local/cs/Python-2.7.18/lib/python2.7/lib-tk
+/usr/local/cs/Python-2.7.18/lib/python2.7/lib-tk/test
+/usr/local/cs/Python-2.7.18/lib/python2.7/lib-tk/test/test_tkinter
+/usr/local/cs/Python-2.7.18/lib/python2.7/lib-tk/test/test_ttk
+/usr/local/cs/Python-2.7.18/lib/python2.7/site-packages
+/usr/local/cs/Python-2.7.18/lib/python2.7/test
+/usr/local/cs/Python-2.7.18/lib/python2.7/test/audiodata
+/usr/local/cs/Python-2.7.18/lib/python2.7/test/capath
+/usr/local/cs/Python-2.7.18/lib/python2.7/test/data
+/usr/local/cs/Python-2.7.18/lib/python2.7/test/cjkencodings
+/usr/local/cs/Python-2.7.18/lib/python2.7/test/decimaltestdata
+/usr/local/cs/Python-2.7.18/lib/python2.7/test/xmltestdata
+/usr/local/cs/Python-2.7.18/lib/python2.7/test/imghdrdata
+/usr/local/cs/Python-2.7.18/lib/python2.7/test/subprocessdata
+/usr/local/cs/Python-2.7.18/lib/python2.7/test/support
+/usr/local/cs/Python-2.7.18/lib/python2.7/test/tracedmodules
+/usr/local/cs/Python-2.7.18/lib/python2.7/encodings
+/usr/local/cs/Python-2.7.18/lib/python2.7/compiler
+/usr/local/cs/Python-2.7.18/lib/python2.7/hotshot
+/usr/local/cs/Python-2.7.18/lib/python2.7/email
+/usr/local/cs/Python-2.7.18/lib/python2.7/email/mime
+/usr/local/cs/Python-2.7.18/lib/python2.7/email/test
+/usr/local/cs/Python-2.7.18/lib/python2.7/email/test/data
+/usr/local/cs/Python-2.7.18/lib/python2.7/ensurepip
+/usr/local/cs/Python-2.7.18/lib/python2.7/ensurepip/_bundled
+/usr/local/cs/Python-2.7.18/lib/python2.7/json
+/usr/local/cs/Python-2.7.18/lib/python2.7/json/tests
+/usr/local/cs/Python-2.7.18/lib/python2.7/sqlite3
+/usr/local/cs/Python-2.7.18/lib/python2.7/sqlite3/test
+/usr/local/cs/Python-2.7.18/lib/python2.7/logging
+/usr/local/cs/Python-2.7.18/lib/python2.7/bsddb
+/usr/local/cs/Python-2.7.18/lib/python2.7/bsddb/test
+/usr/local/cs/Python-2.7.18/lib/python2.7/importlib
+/usr/local/cs/Python-2.7.18/lib/python2.7/wsgiref
+/usr/local/cs/Python-2.7.18/lib/python2.7/lib2to3
+/usr/local/cs/Python-2.7.18/lib/python2.7/lib2to3/fixes
+/usr/local/cs/Python-2.7.18/lib/python2.7/lib2to3/pgen2
+/usr/local/cs/Python-2.7.18/lib/python2.7/lib2to3/tests
+/usr/local/cs/Python-2.7.18/lib/python2.7/lib2to3/tests/data
+/usr/local/cs/Python-2.7.18/lib/python2.7/lib2to3/tests/data/fixers
+/usr/local/cs/Python-2.7.18/lib/python2.7/lib2to3/tests/data/fixers/myfixes
+/usr/local/cs/Python-2.7.18/lib/python2.7/ctypes
+/usr/local/cs/Python-2.7.18/lib/python2.7/ctypes/test
+/usr/local/cs/Python-2.7.18/lib/python2.7/ctypes/macholib
+/usr/local/cs/Python-2.7.18/lib/python2.7/idlelib
+/usr/local/cs/Python-2.7.18/lib/python2.7/idlelib/Icons
+/usr/local/cs/Python-2.7.18/lib/python2.7/idlelib/idle_test
+/usr/local/cs/Python-2.7.18/lib/python2.7/distutils
+/usr/local/cs/Python-2.7.18/lib/python2.7/distutils/command
+/usr/local/cs/Python-2.7.18/lib/python2.7/distutils/tests
+/usr/local/cs/Python-2.7.18/lib/python2.7/xml
+/usr/local/cs/Python-2.7.18/lib/python2.7/xml/dom
+/usr/local/cs/Python-2.7.18/lib/python2.7/xml/etree
+/usr/local/cs/Python-2.7.18/lib/python2.7/xml/parsers
+/usr/local/cs/Python-2.7.18/lib/python2.7/xml/sax
+/usr/local/cs/Python-2.7.18/lib/python2.7/multiprocessing
+/usr/local/cs/Python-2.7.18/lib/python2.7/multiprocessing/dummy
+/usr/local/cs/Python-2.7.18/lib/python2.7/unittest
+/usr/local/cs/Python-2.7.18/lib/python2.7/unittest/test
+/usr/local/cs/Python-2.7.18/lib/python2.7/curses
+/usr/local/cs/Python-2.7.18/lib/python2.7/pydoc_data
+/usr/local/cs/Python-2.7.18/lib/python2.7/plat-linux2
+/usr/local/cs/Python-2.7.18/lib/pkgconfig
+/usr/local/cs/Python-2.7.18/bin
+/usr/local/cs/Python-3.9.0
+/usr/local/cs/Python-3.9.0/bin
+/usr/local/cs/Python-3.9.0/include
+/usr/local/cs/Python-3.9.0/include/python3.9
+/usr/local/cs/Python-3.9.0/include/python3.9/cpython
+/usr/local/cs/Python-3.9.0/include/python3.9/internal
+/usr/local/cs/Python-3.9.0/share
+/usr/local/cs/Python-3.9.0/share/man
+/usr/local/cs/Python-3.9.0/share/man/man1
+/usr/local/cs/Python-3.9.0/lib
+/usr/local/cs/Python-3.9.0/lib/python3.9
+/usr/local/cs/Python-3.9.0/lib/python3.9/lib-dynload
+/usr/local/cs/Python-3.9.0/lib/python3.9/config-3.9-x86_64-linux-gnu
+/usr/local/cs/Python-3.9.0/lib/python3.9/config-3.9-x86_64-linux-gnu/__pycache__
+/usr/local/cs/Python-3.9.0/lib/python3.9/tkinter
+/usr/local/cs/Python-3.9.0/lib/python3.9/tkinter/test
+/usr/local/cs/Python-3.9.0/lib/python3.9/tkinter/test/test_tkinter
+/usr/local/cs/Python-3.9.0/lib/python3.9/tkinter/test/test_tkinter/__pycache__
+/usr/local/cs/Python-3.9.0/lib/python3.9/tkinter/test/test_ttk
+/usr/local/cs/Python-3.9.0/lib/python3.9/tkinter/test/test_ttk/__pycache__
+/usr/local/cs/Python-3.9.0/lib/python3.9/tkinter/test/__pycache__
+/usr/local/cs/Python-3.9.0/lib/python3.9/tkinter/__pycache__
+/usr/local/cs/Python-3.9.0/lib/python3.9/site-packages
+/usr/local/cs/Python-3.9.0/lib/python3.9/site-packages/pkg_resources
+/usr/local/cs/Python-3.9.0/lib/python3.9/site-packages/pkg_resources/_vendor
+/usr/local/cs/Python-3.9.0/lib/python3.9/site-packages/pkg_resources/_vendor/packaging
+/usr/local/cs/Python-3.9.0/lib/python3.9/site-packages/pkg_resources/_vendor/packaging/__pycache__
+/usr/local/cs/Python-3.9.0/lib/python3.9/site-packages/pkg_resources/_vendor/__pycache__
+/usr/local/cs/Python-3.9.0/lib/python3.9/site-packages/pkg_resources/extern
+/usr/local/cs/Python-3.9.0/lib/python3.9/site-packages/pkg_resources/extern/__pycache__
+/usr/local/cs/Python-3.9.0/lib/python3.9/site-packages/pkg_resources/__pycache__
+/usr/local/cs/Python-3.9.0/lib/python3.9/site-packages/setuptools
+/usr/local/cs/Python-3.9.0/lib/python3.9/site-packages/setuptools/_distutils
+/usr/local/cs/Python-3.9.0/lib/python3.9/site-packages/setuptools/_distutils/command
+/usr/local/cs/Python-3.9.0/lib/python3.9/site-packages/setuptools/_distutils/command/__pycache__
+/usr/local/cs/Python-3.9.0/lib/python3.9/site-packages/setuptools/_distutils/__pycache__
+/usr/local/cs/Python-3.9.0/lib/python3.9/site-packages/setuptools/_vendor
+/usr/local/cs/Python-3.9.0/lib/python3.9/site-packages/setuptools/_vendor/packaging
+/usr/local/cs/Python-3.9.0/lib/python3.9/site-packages/setuptools/_vendor/packaging/__pycache__
+/usr/local/cs/Python-3.9.0/lib/python3.9/site-packages/setuptools/_vendor/__pycache__
+/usr/local/cs/Python-3.9.0/lib/python3.9/site-packages/setuptools/command
+/usr/local/cs/Python-3.9.0/lib/python3.9/site-packages/setuptools/command/__pycache__
+/usr/local/cs/Python-3.9.0/lib/python3.9/site-packages/setuptools/extern
+/usr/local/cs/Python-3.9.0/lib/python3.9/site-packages/setuptools/extern/__pycache__
+/usr/local/cs/Python-3.9.0/lib/python3.9/site-packages/setuptools/__pycache__
+/usr/local/cs/Python-3.9.0/lib/python3.9/site-packages/setuptools-49.2.1.dist-info
+/usr/local/cs/Python-3.9.0/lib/python3.9/site-packages/__pycache__
+/usr/local/cs/Python-3.9.0/lib/python3.9/site-packages/pip
+/usr/local/cs/Python-3.9.0/lib/python3.9/site-packages/pip/_internal
+/usr/local/cs/Python-3.9.0/lib/python3.9/site-packages/pip/_internal/cli
+/usr/local/cs/Python-3.9.0/lib/python3.9/site-packages/pip/_internal/cli/__pycache__
+/usr/local/cs/Python-3.9.0/lib/python3.9/site-packages/pip/_internal/commands
+/usr/local/cs/Python-3.9.0/lib/python3.9/site-packages/pip/_internal/commands/__pycache__
+/usr/local/cs/Python-3.9.0/lib/python3.9/site-packages/pip/_internal/distributions
+/usr/local/cs/Python-3.9.0/lib/python3.9/site-packages/pip/_internal/distributions/__pycache__
+/usr/local/cs/Python-3.9.0/lib/python3.9/site-packages/pip/_internal/index
+/usr/local/cs/Python-3.9.0/lib/python3.9/site-packages/pip/_internal/index/__pycache__
+/usr/local/cs/Python-3.9.0/lib/python3.9/site-packages/pip/_internal/models
+/usr/local/cs/Python-3.9.0/lib/python3.9/site-packages/pip/_internal/models/__pycache__
+/usr/local/cs/Python-3.9.0/lib/python3.9/site-packages/pip/_internal/network
+/usr/local/cs/Python-3.9.0/lib/python3.9/site-packages/pip/_internal/network/__pycache__
+/usr/local/cs/Python-3.9.0/lib/python3.9/site-packages/pip/_internal/operations
+/usr/local/cs/Python-3.9.0/lib/python3.9/site-packages/pip/_internal/operations/build
+/usr/local/cs/Python-3.9.0/lib/python3.9/site-packages/pip/_internal/operations/build/__pycache__
+/usr/local/cs/Python-3.9.0/lib/python3.9/site-packages/pip/_internal/operations/install
+/usr/local/cs/Python-3.9.0/lib/python3.9/site-packages/pip/_internal/operations/install/__pycache__
+/usr/local/cs/Python-3.9.0/lib/python3.9/site-packages/pip/_internal/operations/__pycache__
+/usr/local/cs/Python-3.9.0/lib/python3.9/site-packages/pip/_internal/req
+/usr/local/cs/Python-3.9.0/lib/python3.9/site-packages/pip/_internal/req/__pycache__
+/usr/local/cs/Python-3.9.0/lib/python3.9/site-packages/pip/_internal/resolution
+/usr/local/cs/Python-3.9.0/lib/python3.9/site-packages/pip/_internal/resolution/legacy
+/usr/local/cs/Python-3.9.0/lib/python3.9/site-packages/pip/_internal/resolution/legacy/__pycache__
+/usr/local/cs/Python-3.9.0/lib/python3.9/site-packages/pip/_internal/resolution/resolvelib
+/usr/local/cs/Python-3.9.0/lib/python3.9/site-packages/pip/_internal/resolution/resolvelib/__pycache__
+/usr/local/cs/Python-3.9.0/lib/python3.9/site-packages/pip/_internal/resolution/__pycache__
+/usr/local/cs/Python-3.9.0/lib/python3.9/site-packages/pip/_internal/utils
+/usr/local/cs/Python-3.9.0/lib/python3.9/site-packages/pip/_internal/utils/__pycache__
+/usr/local/cs/Python-3.9.0/lib/python3.9/site-packages/pip/_internal/vcs
+/usr/local/cs/Python-3.9.0/lib/python3.9/site-packages/pip/_internal/vcs/__pycache__
+/usr/local/cs/Python-3.9.0/lib/python3.9/site-packages/pip/_internal/__pycache__
+/usr/local/cs/Python-3.9.0/lib/python3.9/site-packages/pip/_vendor
+/usr/local/cs/Python-3.9.0/lib/python3.9/site-packages/pip/_vendor/cachecontrol
+/usr/local/cs/Python-3.9.0/lib/python3.9/site-packages/pip/_vendor/cachecontrol/caches
+/usr/local/cs/Python-3.9.0/lib/python3.9/site-packages/pip/_vendor/cachecontrol/caches/__pycache__
+/usr/local/cs/Python-3.9.0/lib/python3.9/site-packages/pip/_vendor/cachecontrol/__pycache__
+/usr/local/cs/Python-3.9.0/lib/python3.9/site-packages/pip/_vendor/certifi
+/usr/local/cs/Python-3.9.0/lib/python3.9/site-packages/pip/_vendor/certifi/__pycache__
+/usr/local/cs/Python-3.9.0/lib/python3.9/site-packages/pip/_vendor/chardet
+/usr/local/cs/Python-3.9.0/lib/python3.9/site-packages/pip/_vendor/chardet/cli
+/usr/local/cs/Python-3.9.0/lib/python3.9/site-packages/pip/_vendor/chardet/cli/__pycache__
+/usr/local/cs/Python-3.9.0/lib/python3.9/site-packages/pip/_vendor/chardet/__pycache__
+/usr/local/cs/Python-3.9.0/lib/python3.9/site-packages/pip/_vendor/colorama
+/usr/local/cs/Python-3.9.0/lib/python3.9/site-packages/pip/_vendor/colorama/__pycache__
+/usr/local/cs/Python-3.9.0/lib/python3.9/site-packages/pip/_vendor/distlib
+/usr/local/cs/Python-3.9.0/lib/python3.9/site-packages/pip/_vendor/distlib/_backport
+/usr/local/cs/Python-3.9.0/lib/python3.9/site-packages/pip/_vendor/distlib/_backport/__pycache__
+/usr/local/cs/Python-3.9.0/lib/python3.9/site-packages/pip/_vendor/distlib/__pycache__
+/usr/local/cs/Python-3.9.0/lib/python3.9/site-packages/pip/_vendor/html5lib
+/usr/local/cs/Python-3.9.0/lib/python3.9/site-packages/pip/_vendor/html5lib/_trie
+/usr/local/cs/Python-3.9.0/lib/python3.9/site-packages/pip/_vendor/html5lib/_trie/__pycache__
+/usr/local/cs/Python-3.9.0/lib/python3.9/site-packages/pip/_vendor/html5lib/filters
+/usr/local/cs/Python-3.9.0/lib/python3.9/site-packages/pip/_vendor/html5lib/filters/__pycache__
+/usr/local/cs/Python-3.9.0/lib/python3.9/site-packages/pip/_vendor/html5lib/treeadapters
+/usr/local/cs/Python-3.9.0/lib/python3.9/site-packages/pip/_vendor/html5lib/treeadapters/__pycache__
+/usr/local/cs/Python-3.9.0/lib/python3.9/site-packages/pip/_vendor/html5lib/treebuilders
+/usr/local/cs/Python-3.9.0/lib/python3.9/site-packages/pip/_vendor/html5lib/treebuilders/__pycache__
+/usr/local/cs/Python-3.9.0/lib/python3.9/site-packages/pip/_vendor/html5lib/treewalkers
+/usr/local/cs/Python-3.9.0/lib/python3.9/site-packages/pip/_vendor/html5lib/treewalkers/__pycache__
+/usr/local/cs/Python-3.9.0/lib/python3.9/site-packages/pip/_vendor/html5lib/__pycache__
+/usr/local/cs/Python-3.9.0/lib/python3.9/site-packages/pip/_vendor/idna
+/usr/local/cs/Python-3.9.0/lib/python3.9/site-packages/pip/_vendor/idna/__pycache__
+/usr/local/cs/Python-3.9.0/lib/python3.9/site-packages/pip/_vendor/msgpack
+/usr/local/cs/Python-3.9.0/lib/python3.9/site-packages/pip/_vendor/msgpack/__pycache__
+/usr/local/cs/Python-3.9.0/lib/python3.9/site-packages/pip/_vendor/packaging
+/usr/local/cs/Python-3.9.0/lib/python3.9/site-packages/pip/_vendor/packaging/__pycache__
+/usr/local/cs/Python-3.9.0/lib/python3.9/site-packages/pip/_vendor/pep517
+/usr/local/cs/Python-3.9.0/lib/python3.9/site-packages/pip/_vendor/pep517/__pycache__
+/usr/local/cs/Python-3.9.0/lib/python3.9/site-packages/pip/_vendor/pkg_resources
+/usr/local/cs/Python-3.9.0/lib/python3.9/site-packages/pip/_vendor/pkg_resources/__pycache__
+/usr/local/cs/Python-3.9.0/lib/python3.9/site-packages/pip/_vendor/progress
+/usr/local/cs/Python-3.9.0/lib/python3.9/site-packages/pip/_vendor/progress/__pycache__
+/usr/local/cs/Python-3.9.0/lib/python3.9/site-packages/pip/_vendor/requests
+/usr/local/cs/Python-3.9.0/lib/python3.9/site-packages/pip/_vendor/requests/__pycache__
+/usr/local/cs/Python-3.9.0/lib/python3.9/site-packages/pip/_vendor/resolvelib
+/usr/local/cs/Python-3.9.0/lib/python3.9/site-packages/pip/_vendor/resolvelib/compat
+/usr/local/cs/Python-3.9.0/lib/python3.9/site-packages/pip/_vendor/resolvelib/compat/__pycache__
+/usr/local/cs/Python-3.9.0/lib/python3.9/site-packages/pip/_vendor/resolvelib/__pycache__
+/usr/local/cs/Python-3.9.0/lib/python3.9/site-packages/pip/_vendor/toml
+/usr/local/cs/Python-3.9.0/lib/python3.9/site-packages/pip/_vendor/toml/__pycache__
+/usr/local/cs/Python-3.9.0/lib/python3.9/site-packages/pip/_vendor/urllib3
+/usr/local/cs/Python-3.9.0/lib/python3.9/site-packages/pip/_vendor/urllib3/contrib
+/usr/local/cs/Python-3.9.0/lib/python3.9/site-packages/pip/_vendor/urllib3/contrib/_securetransport
+/usr/local/cs/Python-3.9.0/lib/python3.9/site-packages/pip/_vendor/urllib3/contrib/_securetransport/__pycache__
+/usr/local/cs/Python-3.9.0/lib/python3.9/site-packages/pip/_vendor/urllib3/contrib/__pycache__
+/usr/local/cs/Python-3.9.0/lib/python3.9/site-packages/pip/_vendor/urllib3/packages
+/usr/local/cs/Python-3.9.0/lib/python3.9/site-packages/pip/_vendor/urllib3/packages/backports
+/usr/local/cs/Python-3.9.0/lib/python3.9/site-packages/pip/_vendor/urllib3/packages/backports/__pycache__
+/usr/local/cs/Python-3.9.0/lib/python3.9/site-packages/pip/_vendor/urllib3/packages/ssl_match_hostname
+/usr/local/cs/Python-3.9.0/lib/python3.9/site-packages/pip/_vendor/urllib3/packages/ssl_match_hostname/__pycache__
+/usr/local/cs/Python-3.9.0/lib/python3.9/site-packages/pip/_vendor/urllib3/packages/__pycache__
+/usr/local/cs/Python-3.9.0/lib/python3.9/site-packages/pip/_vendor/urllib3/util
+/usr/local/cs/Python-3.9.0/lib/python3.9/site-packages/pip/_vendor/urllib3/util/__pycache__
+/usr/local/cs/Python-3.9.0/lib/python3.9/site-packages/pip/_vendor/urllib3/__pycache__
+/usr/local/cs/Python-3.9.0/lib/python3.9/site-packages/pip/_vendor/webencodings
+/usr/local/cs/Python-3.9.0/lib/python3.9/site-packages/pip/_vendor/webencodings/__pycache__
+/usr/local/cs/Python-3.9.0/lib/python3.9/site-packages/pip/_vendor/__pycache__
+/usr/local/cs/Python-3.9.0/lib/python3.9/site-packages/pip/__pycache__
+/usr/local/cs/Python-3.9.0/lib/python3.9/site-packages/pip-20.2.3.dist-info
+/usr/local/cs/Python-3.9.0/lib/python3.9/test
+/usr/local/cs/Python-3.9.0/lib/python3.9/test/audiodata
+/usr/local/cs/Python-3.9.0/lib/python3.9/test/capath
+/usr/local/cs/Python-3.9.0/lib/python3.9/test/data
+/usr/local/cs/Python-3.9.0/lib/python3.9/test/cjkencodings
+/usr/local/cs/Python-3.9.0/lib/python3.9/test/decimaltestdata
+/usr/local/cs/Python-3.9.0/lib/python3.9/test/xmltestdata
+/usr/local/cs/Python-3.9.0/lib/python3.9/test/xmltestdata/c14n-20
+/usr/local/cs/Python-3.9.0/lib/python3.9/test/dtracedata
+/usr/local/cs/Python-3.9.0/lib/python3.9/test/dtracedata/__pycache__
+/usr/local/cs/Python-3.9.0/lib/python3.9/test/eintrdata
+/usr/local/cs/Python-3.9.0/lib/python3.9/test/eintrdata/__pycache__
+/usr/local/cs/Python-3.9.0/lib/python3.9/test/imghdrdata
+/usr/local/cs/Python-3.9.0/lib/python3.9/test/libregrtest
+/usr/local/cs/Python-3.9.0/lib/python3.9/test/libregrtest/__pycache__
+/usr/local/cs/Python-3.9.0/lib/python3.9/test/subprocessdata
+/usr/local/cs/Python-3.9.0/lib/python3.9/test/subprocessdata/__pycache__
+/usr/local/cs/Python-3.9.0/lib/python3.9/test/sndhdrdata
+/usr/local/cs/Python-3.9.0/lib/python3.9/test/support
+/usr/local/cs/Python-3.9.0/lib/python3.9/test/support/__pycache__
+/usr/local/cs/Python-3.9.0/lib/python3.9/test/tracedmodules
+/usr/local/cs/Python-3.9.0/lib/python3.9/test/tracedmodules/__pycache__
+/usr/local/cs/Python-3.9.0/lib/python3.9/test/encoded_modules
+/usr/local/cs/Python-3.9.0/lib/python3.9/test/encoded_modules/__pycache__
+/usr/local/cs/Python-3.9.0/lib/python3.9/test/test_import
+/usr/local/cs/Python-3.9.0/lib/python3.9/test/test_import/data
+/usr/local/cs/Python-3.9.0/lib/python3.9/test/test_import/data/circular_imports
+/usr/local/cs/Python-3.9.0/lib/python3.9/test/test_import/data/circular_imports/subpkg
+/usr/local/cs/Python-3.9.0/lib/python3.9/test/test_import/data/circular_imports/subpkg/__pycache__
+/usr/local/cs/Python-3.9.0/lib/python3.9/test/test_import/data/circular_imports/__pycache__
+/usr/local/cs/Python-3.9.0/lib/python3.9/test/test_import/data/package
+/usr/local/cs/Python-3.9.0/lib/python3.9/test/test_import/data/package/__pycache__
+/usr/local/cs/Python-3.9.0/lib/python3.9/test/test_import/data/package2
+/usr/local/cs/Python-3.9.0/lib/python3.9/test/test_import/data/package2/__pycache__
+/usr/local/cs/Python-3.9.0/lib/python3.9/test/test_import/data/unwritable
+/usr/local/cs/Python-3.9.0/lib/python3.9/test/test_import/data/unwritable/__pycache__
+/usr/local/cs/Python-3.9.0/lib/python3.9/test/test_import/__pycache__
+/usr/local/cs/Python-3.9.0/lib/python3.9/test/test_importlib
+/usr/local/cs/Python-3.9.0/lib/python3.9/test/test_importlib/builtin
+/usr/local/cs/Python-3.9.0/lib/python3.9/test/test_importlib/builtin/__pycache__
+/usr/local/cs/Python-3.9.0/lib/python3.9/test/test_importlib/data
+/usr/local/cs/Python-3.9.0/lib/python3.9/test/test_importlib/data/__pycache__
+/usr/local/cs/Python-3.9.0/lib/python3.9/test/test_importlib/data01
+/usr/local/cs/Python-3.9.0/lib/python3.9/test/test_importlib/data01/subdirectory
+/usr/local/cs/Python-3.9.0/lib/python3.9/test/test_importlib/data01/subdirectory/__pycache__
+/usr/local/cs/Python-3.9.0/lib/python3.9/test/test_importlib/data01/__pycache__
+/usr/local/cs/Python-3.9.0/lib/python3.9/test/test_importlib/data02
+/usr/local/cs/Python-3.9.0/lib/python3.9/test/test_importlib/data02/one
+/usr/local/cs/Python-3.9.0/lib/python3.9/test/test_importlib/data02/one/__pycache__
+/usr/local/cs/Python-3.9.0/lib/python3.9/test/test_importlib/data02/two
+/usr/local/cs/Python-3.9.0/lib/python3.9/test/test_importlib/data02/two/__pycache__
+/usr/local/cs/Python-3.9.0/lib/python3.9/test/test_importlib/data02/__pycache__
+/usr/local/cs/Python-3.9.0/lib/python3.9/test/test_importlib/data03
+/usr/local/cs/Python-3.9.0/lib/python3.9/test/test_importlib/data03/namespace
+/usr/local/cs/Python-3.9.0/lib/python3.9/test/test_importlib/data03/namespace/portion1
+/usr/local/cs/Python-3.9.0/lib/python3.9/test/test_importlib/data03/namespace/portion1/__pycache__
+/usr/local/cs/Python-3.9.0/lib/python3.9/test/test_importlib/data03/namespace/portion2
+/usr/local/cs/Python-3.9.0/lib/python3.9/test/test_importlib/data03/namespace/portion2/__pycache__
+/usr/local/cs/Python-3.9.0/lib/python3.9/test/test_importlib/data03/__pycache__
+/usr/local/cs/Python-3.9.0/lib/python3.9/test/test_importlib/extension
+/usr/local/cs/Python-3.9.0/lib/python3.9/test/test_importlib/extension/__pycache__
+/usr/local/cs/Python-3.9.0/lib/python3.9/test/test_importlib/frozen
+/usr/local/cs/Python-3.9.0/lib/python3.9/test/test_importlib/frozen/__pycache__
+/usr/local/cs/Python-3.9.0/lib/python3.9/test/test_importlib/import_
+/usr/local/cs/Python-3.9.0/lib/python3.9/test/test_importlib/import_/__pycache__
+/usr/local/cs/Python-3.9.0/lib/python3.9/test/test_importlib/namespace_pkgs
+/usr/local/cs/Python-3.9.0/lib/python3.9/test/test_importlib/namespace_pkgs/both_portions
+/usr/local/cs/Python-3.9.0/lib/python3.9/test/test_importlib/namespace_pkgs/both_portions/foo
+/usr/local/cs/Python-3.9.0/lib/python3.9/test/test_importlib/namespace_pkgs/both_portions/foo/__pycache__
+/usr/local/cs/Python-3.9.0/lib/python3.9/test/test_importlib/namespace_pkgs/module_and_namespace_package
+/usr/local/cs/Python-3.9.0/lib/python3.9/test/test_importlib/namespace_pkgs/module_and_namespace_package/a_test
+/usr/local/cs/Python-3.9.0/lib/python3.9/test/test_importlib/namespace_pkgs/module_and_namespace_package/__pycache__
+/usr/local/cs/Python-3.9.0/lib/python3.9/test/test_importlib/namespace_pkgs/not_a_namespace_pkg
+/usr/local/cs/Python-3.9.0/lib/python3.9/test/test_importlib/namespace_pkgs/not_a_namespace_pkg/foo
+/usr/local/cs/Python-3.9.0/lib/python3.9/test/test_importlib/namespace_pkgs/not_a_namespace_pkg/foo/__pycache__
+/usr/local/cs/Python-3.9.0/lib/python3.9/test/test_importlib/namespace_pkgs/portion1
+/usr/local/cs/Python-3.9.0/lib/python3.9/test/test_importlib/namespace_pkgs/portion1/foo
+/usr/local/cs/Python-3.9.0/lib/python3.9/test/test_importlib/namespace_pkgs/portion1/foo/__pycache__
+/usr/local/cs/Python-3.9.0/lib/python3.9/test/test_importlib/namespace_pkgs/portion2
+/usr/local/cs/Python-3.9.0/lib/python3.9/test/test_importlib/namespace_pkgs/portion2/foo
+/usr/local/cs/Python-3.9.0/lib/python3.9/test/test_importlib/namespace_pkgs/portion2/foo/__pycache__
+/usr/local/cs/Python-3.9.0/lib/python3.9/test/test_importlib/namespace_pkgs/project1
+/usr/local/cs/Python-3.9.0/lib/python3.9/test/test_importlib/namespace_pkgs/project1/parent
+/usr/local/cs/Python-3.9.0/lib/python3.9/test/test_importlib/namespace_pkgs/project1/parent/child
+/usr/local/cs/Python-3.9.0/lib/python3.9/test/test_importlib/namespace_pkgs/project1/parent/child/__pycache__
+/usr/local/cs/Python-3.9.0/lib/python3.9/test/test_importlib/namespace_pkgs/project2
+/usr/local/cs/Python-3.9.0/lib/python3.9/test/test_importlib/namespace_pkgs/project2/parent
+/usr/local/cs/Python-3.9.0/lib/python3.9/test/test_importlib/namespace_pkgs/project2/parent/child
+/usr/local/cs/Python-3.9.0/lib/python3.9/test/test_importlib/namespace_pkgs/project2/parent/child/__pycache__
+/usr/local/cs/Python-3.9.0/lib/python3.9/test/test_importlib/namespace_pkgs/project3
+/usr/local/cs/Python-3.9.0/lib/python3.9/test/test_importlib/namespace_pkgs/project3/parent
+/usr/local/cs/Python-3.9.0/lib/python3.9/test/test_importlib/namespace_pkgs/project3/parent/child
+/usr/local/cs/Python-3.9.0/lib/python3.9/test/test_importlib/namespace_pkgs/project3/parent/child/__pycache__
+/usr/local/cs/Python-3.9.0/lib/python3.9/test/test_importlib/source
+/usr/local/cs/Python-3.9.0/lib/python3.9/test/test_importlib/source/__pycache__
+/usr/local/cs/Python-3.9.0/lib/python3.9/test/test_importlib/zipdata01
+/usr/local/cs/Python-3.9.0/lib/python3.9/test/test_importlib/zipdata01/__pycache__
+/usr/local/cs/Python-3.9.0/lib/python3.9/test/test_importlib/zipdata02
+/usr/local/cs/Python-3.9.0/lib/python3.9/test/test_importlib/zipdata02/__pycache__
+/usr/local/cs/Python-3.9.0/lib/python3.9/test/test_importlib/__pycache__
+/usr/local/cs/Python-3.9.0/lib/python3.9/test/test_zoneinfo
+/usr/local/cs/Python-3.9.0/lib/python3.9/test/test_zoneinfo/data
+/usr/local/cs/Python-3.9.0/lib/python3.9/test/test_zoneinfo/data/__pycache__
+/usr/local/cs/Python-3.9.0/lib/python3.9/test/test_zoneinfo/__pycache__
+/usr/local/cs/Python-3.9.0/lib/python3.9/test/ziptestdata
+/usr/local/cs/Python-3.9.0/lib/python3.9/test/ziptestdata/__pycache__
+/usr/local/cs/Python-3.9.0/lib/python3.9/test/test_asyncio
+/usr/local/cs/Python-3.9.0/lib/python3.9/test/test_asyncio/__pycache__
+/usr/local/cs/Python-3.9.0/lib/python3.9/test/test_email
+/usr/local/cs/Python-3.9.0/lib/python3.9/test/test_email/data
+/usr/local/cs/Python-3.9.0/lib/python3.9/test/test_email/__pycache__
+/usr/local/cs/Python-3.9.0/lib/python3.9/test/test_json
+/usr/local/cs/Python-3.9.0/lib/python3.9/test/test_json/__pycache__
+/usr/local/cs/Python-3.9.0/lib/python3.9/test/test_peg_generator
+/usr/local/cs/Python-3.9.0/lib/python3.9/test/test_peg_generator/__pycache__
+/usr/local/cs/Python-3.9.0/lib/python3.9/test/test_tools
+/usr/local/cs/Python-3.9.0/lib/python3.9/test/test_tools/__pycache__
+/usr/local/cs/Python-3.9.0/lib/python3.9/test/test_warnings
+/usr/local/cs/Python-3.9.0/lib/python3.9/test/test_warnings/data
+/usr/local/cs/Python-3.9.0/lib/python3.9/test/test_warnings/data/__pycache__
+/usr/local/cs/Python-3.9.0/lib/python3.9/test/test_warnings/__pycache__
+/usr/local/cs/Python-3.9.0/lib/python3.9/test/__pycache__
+/usr/local/cs/Python-3.9.0/lib/python3.9/importlib
+/usr/local/cs/Python-3.9.0/lib/python3.9/importlib/__pycache__
+/usr/local/cs/Python-3.9.0/lib/python3.9/asyncio
+/usr/local/cs/Python-3.9.0/lib/python3.9/asyncio/__pycache__
+/usr/local/cs/Python-3.9.0/lib/python3.9/collections
+/usr/local/cs/Python-3.9.0/lib/python3.9/collections/__pycache__
+/usr/local/cs/Python-3.9.0/lib/python3.9/concurrent
+/usr/local/cs/Python-3.9.0/lib/python3.9/concurrent/futures
+/usr/local/cs/Python-3.9.0/lib/python3.9/concurrent/futures/__pycache__
+/usr/local/cs/Python-3.9.0/lib/python3.9/concurrent/__pycache__
+/usr/local/cs/Python-3.9.0/lib/python3.9/encodings
+/usr/local/cs/Python-3.9.0/lib/python3.9/encodings/__pycache__
+/usr/local/cs/Python-3.9.0/lib/python3.9/email
+/usr/local/cs/Python-3.9.0/lib/python3.9/email/mime
+/usr/local/cs/Python-3.9.0/lib/python3.9/email/mime/__pycache__
+/usr/local/cs/Python-3.9.0/lib/python3.9/email/__pycache__
+/usr/local/cs/Python-3.9.0/lib/python3.9/ensurepip
+/usr/local/cs/Python-3.9.0/lib/python3.9/ensurepip/_bundled
+/usr/local/cs/Python-3.9.0/lib/python3.9/ensurepip/_bundled/__pycache__
+/usr/local/cs/Python-3.9.0/lib/python3.9/ensurepip/__pycache__
+/usr/local/cs/Python-3.9.0/lib/python3.9/html
+/usr/local/cs/Python-3.9.0/lib/python3.9/html/__pycache__
+/usr/local/cs/Python-3.9.0/lib/python3.9/json
+/usr/local/cs/Python-3.9.0/lib/python3.9/json/__pycache__
+/usr/local/cs/Python-3.9.0/lib/python3.9/http
+/usr/local/cs/Python-3.9.0/lib/python3.9/http/__pycache__
+/usr/local/cs/Python-3.9.0/lib/python3.9/dbm
+/usr/local/cs/Python-3.9.0/lib/python3.9/dbm/__pycache__
+/usr/local/cs/Python-3.9.0/lib/python3.9/xmlrpc
+/usr/local/cs/Python-3.9.0/lib/python3.9/xmlrpc/__pycache__
+/usr/local/cs/Python-3.9.0/lib/python3.9/sqlite3
+/usr/local/cs/Python-3.9.0/lib/python3.9/sqlite3/test
+/usr/local/cs/Python-3.9.0/lib/python3.9/sqlite3/test/__pycache__
+/usr/local/cs/Python-3.9.0/lib/python3.9/sqlite3/__pycache__
+/usr/local/cs/Python-3.9.0/lib/python3.9/logging
+/usr/local/cs/Python-3.9.0/lib/python3.9/logging/__pycache__
+/usr/local/cs/Python-3.9.0/lib/python3.9/wsgiref
+/usr/local/cs/Python-3.9.0/lib/python3.9/wsgiref/__pycache__
+/usr/local/cs/Python-3.9.0/lib/python3.9/urllib
+/usr/local/cs/Python-3.9.0/lib/python3.9/urllib/__pycache__
+/usr/local/cs/Python-3.9.0/lib/python3.9/lib2to3
+/usr/local/cs/Python-3.9.0/lib/python3.9/lib2to3/fixes
+/usr/local/cs/Python-3.9.0/lib/python3.9/lib2to3/fixes/__pycache__
+/usr/local/cs/Python-3.9.0/lib/python3.9/lib2to3/pgen2
+/usr/local/cs/Python-3.9.0/lib/python3.9/lib2to3/pgen2/__pycache__
+/usr/local/cs/Python-3.9.0/lib/python3.9/lib2to3/tests
+/usr/local/cs/Python-3.9.0/lib/python3.9/lib2to3/tests/data
+/usr/local/cs/Python-3.9.0/lib/python3.9/lib2to3/tests/data/fixers
+/usr/local/cs/Python-3.9.0/lib/python3.9/lib2to3/tests/data/fixers/myfixes
+/usr/local/cs/Python-3.9.0/lib/python3.9/lib2to3/tests/__pycache__
+/usr/local/cs/Python-3.9.0/lib/python3.9/lib2to3/__pycache__
+/usr/local/cs/Python-3.9.0/lib/python3.9/ctypes
+/usr/local/cs/Python-3.9.0/lib/python3.9/ctypes/test
+/usr/local/cs/Python-3.9.0/lib/python3.9/ctypes/test/__pycache__
+/usr/local/cs/Python-3.9.0/lib/python3.9/ctypes/macholib
+/usr/local/cs/Python-3.9.0/lib/python3.9/ctypes/macholib/__pycache__
+/usr/local/cs/Python-3.9.0/lib/python3.9/ctypes/__pycache__
+/usr/local/cs/Python-3.9.0/lib/python3.9/idlelib
+/usr/local/cs/Python-3.9.0/lib/python3.9/idlelib/Icons
+/usr/local/cs/Python-3.9.0/lib/python3.9/idlelib/idle_test
+/usr/local/cs/Python-3.9.0/lib/python3.9/idlelib/idle_test/__pycache__
+/usr/local/cs/Python-3.9.0/lib/python3.9/idlelib/__pycache__
+/usr/local/cs/Python-3.9.0/lib/python3.9/distutils
+/usr/local/cs/Python-3.9.0/lib/python3.9/distutils/command
+/usr/local/cs/Python-3.9.0/lib/python3.9/distutils/command/__pycache__
+/usr/local/cs/Python-3.9.0/lib/python3.9/distutils/tests
+/usr/local/cs/Python-3.9.0/lib/python3.9/distutils/tests/__pycache__
+/usr/local/cs/Python-3.9.0/lib/python3.9/distutils/__pycache__
+/usr/local/cs/Python-3.9.0/lib/python3.9/xml
+/usr/local/cs/Python-3.9.0/lib/python3.9/xml/dom
+/usr/local/cs/Python-3.9.0/lib/python3.9/xml/dom/__pycache__
+/usr/local/cs/Python-3.9.0/lib/python3.9/xml/etree
+/usr/local/cs/Python-3.9.0/lib/python3.9/xml/etree/__pycache__
+/usr/local/cs/Python-3.9.0/lib/python3.9/xml/parsers
+/usr/local/cs/Python-3.9.0/lib/python3.9/xml/parsers/__pycache__
+/usr/local/cs/Python-3.9.0/lib/python3.9/xml/sax
+/usr/local/cs/Python-3.9.0/lib/python3.9/xml/sax/__pycache__
+/usr/local/cs/Python-3.9.0/lib/python3.9/xml/__pycache__
+/usr/local/cs/Python-3.9.0/lib/python3.9/turtledemo
+/usr/local/cs/Python-3.9.0/lib/python3.9/turtledemo/__pycache__
+/usr/local/cs/Python-3.9.0/lib/python3.9/multiprocessing
+/usr/local/cs/Python-3.9.0/lib/python3.9/multiprocessing/dummy
+/usr/local/cs/Python-3.9.0/lib/python3.9/multiprocessing/dummy/__pycache__
+/usr/local/cs/Python-3.9.0/lib/python3.9/multiprocessing/__pycache__
+/usr/local/cs/Python-3.9.0/lib/python3.9/unittest
+/usr/local/cs/Python-3.9.0/lib/python3.9/unittest/test
+/usr/local/cs/Python-3.9.0/lib/python3.9/unittest/test/testmock
+/usr/local/cs/Python-3.9.0/lib/python3.9/unittest/test/testmock/__pycache__
+/usr/local/cs/Python-3.9.0/lib/python3.9/unittest/test/__pycache__
+/usr/local/cs/Python-3.9.0/lib/python3.9/unittest/__pycache__
+/usr/local/cs/Python-3.9.0/lib/python3.9/venv
+/usr/local/cs/Python-3.9.0/lib/python3.9/venv/scripts
+/usr/local/cs/Python-3.9.0/lib/python3.9/venv/scripts/common
+/usr/local/cs/Python-3.9.0/lib/python3.9/venv/scripts/posix
+/usr/local/cs/Python-3.9.0/lib/python3.9/venv/__pycache__
+/usr/local/cs/Python-3.9.0/lib/python3.9/curses
+/usr/local/cs/Python-3.9.0/lib/python3.9/curses/__pycache__
+/usr/local/cs/Python-3.9.0/lib/python3.9/pydoc_data
+/usr/local/cs/Python-3.9.0/lib/python3.9/pydoc_data/__pycache__
+/usr/local/cs/Python-3.9.0/lib/python3.9/zoneinfo
+/usr/local/cs/Python-3.9.0/lib/python3.9/zoneinfo/__pycache__
+/usr/local/cs/Python-3.9.0/lib/python3.9/__pycache__
+/usr/local/cs/Python-3.9.0/lib/pkgconfig

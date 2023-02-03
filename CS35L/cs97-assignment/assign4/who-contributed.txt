@@ -1,0 +1,30 @@
+Chenda Duan UID305377128
+
+I used the following command to search for the specific sentence.
+
+git log --source -S 'Even newspaper reports present contradictory information' --all
+
+It shows the following outputs:
+
+commit c12b432741eed9a422fbf99fa27af6e7a941d88b	refs/tags/2012e
+Author: Arthur David Olson <ado@elsie>
+Date:   Thu Dec 21 11:43:42 1995 -0500
+
+    Eggert changes
+    
+    SCCS-file: northamerica
+    SCCS-SID: 7.20
+
+This means that this sentence's author is Arthur David Olson,
+and Eggert made this commits.
+
+
+I also use grep -r "Even newspaper" * 
+to try to find the sentence.
+It is locate at northamerica line 890
+
+#Shanks partitioned Indiana into 345 regions, each with its own time history,
+#and wrote "Even newspaper reports present contradictory information"
+
+Since it states that the sentence is  said by Shanks (well, it is quoted)
+i think the copyright issue would be fine?

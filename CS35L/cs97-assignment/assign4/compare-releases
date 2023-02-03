@@ -1,0 +1,3 @@
+#!/bin/bash
+# -cwd
+git diff $1 $2

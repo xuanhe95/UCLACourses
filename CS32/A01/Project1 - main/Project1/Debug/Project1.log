@@ -1,0 +1,45 @@
+﻿  Arena.cpp
+C:\Users\zhang\Documents\Github\UCLACourses\CS32\A01\Project1 - main\Project1\Arena.h(32,16): error C2143: syntax error: missing ';' before '&'
+C:\Users\zhang\Documents\Github\UCLACourses\CS32\A01\Project1 - main\Project1\Arena.h(32,16): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\Users\zhang\Documents\Github\UCLACourses\CS32\A01\Project1 - main\Project1\Arena.h(32,27): error C2238: unexpected token(s) preceding ';'
+C:\Users\zhang\Documents\Github\UCLACourses\CS32\A01\Project1 - main\Project1\Arena.h(44,17): error C3646: 'm_history': unknown override specifier
+C:\Users\zhang\Documents\Github\UCLACourses\CS32\A01\Project1 - main\Project1\Arena.h(44,26): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\Users\zhang\Documents\Github\UCLACourses\CS32\A01\Project1 - main\Project1\Arena.cpp(15,6): error C2614: 'Arena': illegal member initialization: 'm_history' is not a base or member
+C:\Users\zhang\Documents\Github\UCLACourses\CS32\A01\Project1 - main\Project1\Arena.cpp(40,17): error C2039: 'history': is not a member of 'Arena'
+C:\Users\zhang\Documents\Github\UCLACourses\CS32\A01\Project1 - main\Project1\Rabbit.h(5): message : see declaration of 'Arena'
+C:\Users\zhang\Documents\Github\UCLACourses\CS32\A01\Project1 - main\Project1\Arena.cpp(41,12): error C2065: 'm_history': undeclared identifier
+  Game.cpp
+C:\Users\zhang\Documents\Github\UCLACourses\CS32\A01\Project1 - main\Project1\Arena.h(32,16): error C2143: syntax error: missing ';' before '&'
+C:\Users\zhang\Documents\Github\UCLACourses\CS32\A01\Project1 - main\Project1\Arena.h(32,16): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\Users\zhang\Documents\Github\UCLACourses\CS32\A01\Project1 - main\Project1\Arena.h(32,27): error C2238: unexpected token(s) preceding ';'
+C:\Users\zhang\Documents\Github\UCLACourses\CS32\A01\Project1 - main\Project1\Arena.h(44,17): error C3646: 'm_history': unknown override specifier
+C:\Users\zhang\Documents\Github\UCLACourses\CS32\A01\Project1 - main\Project1\Arena.h(44,26): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\Users\zhang\Documents\Github\UCLACourses\CS32\A01\Project1 - main\Project1\Game.cpp(156,26): error C2039: 'history': is not a member of 'Arena'
+C:\Users\zhang\Documents\Github\UCLACourses\CS32\A01\Project1 - main\Project1\Player.h(7): message : see declaration of 'Arena'
+  Player.cpp
+C:\Users\zhang\Documents\Github\UCLACourses\CS32\A01\Project1 - main\Project1\Arena.h(32,16): error C2143: syntax error: missing ';' before '&'
+C:\Users\zhang\Documents\Github\UCLACourses\CS32\A01\Project1 - main\Project1\Arena.h(32,16): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\Users\zhang\Documents\Github\UCLACourses\CS32\A01\Project1 - main\Project1\Arena.h(32,27): error C2238: unexpected token(s) preceding ';'
+C:\Users\zhang\Documents\Github\UCLACourses\CS32\A01\Project1 - main\Project1\Arena.h(44,17): error C3646: 'm_history': unknown override specifier
+C:\Users\zhang\Documents\Github\UCLACourses\CS32\A01\Project1 - main\Project1\Arena.h(44,26): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\Users\zhang\Documents\Github\UCLACourses\CS32\A01\Project1 - main\Project1\Player.cpp(46,14): error C2039: 'history': is not a member of 'Arena'
+C:\Users\zhang\Documents\Github\UCLACourses\CS32\A01\Project1 - main\Project1\Arena.h(11): message : see declaration of 'Arena'
+  Rabbit.cpp
+C:\Users\zhang\Documents\Github\UCLACourses\CS32\A01\Project1 - main\Project1\Arena.h(32,16): error C2143: syntax error: missing ';' before '&'
+C:\Users\zhang\Documents\Github\UCLACourses\CS32\A01\Project1 - main\Project1\Arena.h(32,16): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\Users\zhang\Documents\Github\UCLACourses\CS32\A01\Project1 - main\Project1\Arena.h(32,27): error C2238: unexpected token(s) preceding ';'
+C:\Users\zhang\Documents\Github\UCLACourses\CS32\A01\Project1 - main\Project1\Arena.h(44,17): error C3646: 'm_history': unknown override specifier
+C:\Users\zhang\Documents\Github\UCLACourses\CS32\A01\Project1 - main\Project1\Arena.h(44,26): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+  main.cpp
+C:\Users\zhang\Documents\Github\UCLACourses\CS32\A01\Project1 - main\Project1\Arena.h(32,16): error C2143: syntax error: missing ';' before '&'
+C:\Users\zhang\Documents\Github\UCLACourses\CS32\A01\Project1 - main\Project1\Arena.h(32,16): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\Users\zhang\Documents\Github\UCLACourses\CS32\A01\Project1 - main\Project1\Arena.h(32,27): error C2238: unexpected token(s) preceding ';'
+C:\Users\zhang\Documents\Github\UCLACourses\CS32\A01\Project1 - main\Project1\Arena.h(44,17): error C3646: 'm_history': unknown override specifier
+C:\Users\zhang\Documents\Github\UCLACourses\CS32\A01\Project1 - main\Project1\Arena.h(44,26): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+  utilities.cpp
+C:\Users\zhang\Documents\Github\UCLACourses\CS32\A01\Project1 - main\Project1\Arena.h(32,16): error C2143: syntax error: missing ';' before '&'
+C:\Users\zhang\Documents\Github\UCLACourses\CS32\A01\Project1 - main\Project1\Arena.h(32,16): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\Users\zhang\Documents\Github\UCLACourses\CS32\A01\Project1 - main\Project1\Arena.h(32,27): error C2238: unexpected token(s) preceding ';'
+C:\Users\zhang\Documents\Github\UCLACourses\CS32\A01\Project1 - main\Project1\Arena.h(44,17): error C3646: 'm_history': unknown override specifier
+C:\Users\zhang\Documents\Github\UCLACourses\CS32\A01\Project1 - main\Project1\Arena.h(44,26): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+  Generating Code...
