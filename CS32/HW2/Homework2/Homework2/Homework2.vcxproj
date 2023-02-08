@@ -19,7 +19,11 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="mazestack.cpp" />
+    <ClCompile Include="eval.cpp" />
+    <ClCompile Include="Set.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Set.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

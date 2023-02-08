@@ -26,7 +26,7 @@ bool pathExists(string maze[], int nRows, int nCols, int sr, int sc, int er, int
     s.push(Coord(sr, sc));
     while (!s.empty()) {
         Coord cur = s.top();
-        //cout << cur.r() << " " << cur.c() << endl;
+        //cout << "(" << cur.r() << ", " << cur.c() << ")" << ", ";
         s.pop();
         int row = cur.r();
         int col = cur.c();
