@@ -126,7 +126,10 @@ int countBool(const string st, const Set& trueValues, const Set& falseValues, bo
 			}
 		}
 		else if (c == '!') {
-			s.top() = !s.top();
+			if (s.empty()) return 1;
+			bool temp = s.top();
+			s.pop();
+			s.push(!temp);
 		}
 		else {
 			if (operandStatus(c, trueValues, falseValues) == 0) s.push(true);
@@ -169,6 +172,7 @@ bool isOperand(char c) {
 
 int main()
 {
+	/*
 	string trueChars = "tywz";
 	string falseChars = "fnx";
 	Set trues;
@@ -203,4 +207,31 @@ int main()
 	falses.insert('w');
 	assert(evaluate("w| f", trues, falses, pf, answer) == 0 && pf == "wf|" && !answer);
 	cout << "Passed all tests" << endl;
+	*/
+
+
+	string trueChars = "ucla";
+	string falseChars = "nsx";
+	Set trues;
+	Set falses;
+	for (int k = 0; k < trueChars.size(); k++)
+		trues.insert(trueChars[k]);
+	for (int k = 0; k < falseChars.size(); k++)
+		falses.insert(falseChars[k]);
+	string pf;
+	bool answer;
+
+	cout << evaluate("u&c&l&a & !(u&s&c)", trues, falses, pf, answer) << endl;
+	cout << answer;
+	assert(evaluate("u", trues, falses, pf, answer) == 0 && answer);
+	//assert(evaluate("u&c&l&a & !(u&s&c)", trues, falses, pf, answer) == 0 && answer);
+	assert(evaluate("(n)", trues, falses, pf, answer) == 0 && !answer);
+	assert(evaluate("a&(s)", trues, falses, pf, answer) == 0 && !answer);
+	assert(evaluate("a & !s", trues, falses, pf, answer) == 0 && answer);
+	//assert(evaluate("!(n|u)", trues, falses, pf, answer) == 0 && !answer);
+	assert(evaluate("!n|u", trues, falses, pf, answer) == 0 && answer);
+	assert(evaluate("a|n&n", trues, falses, pf, answer) == 0 && answer);
+	assert(evaluate("a&!(s|u&c|n)|!!!(s&u&n)", trues, falses, pf, answer) == 0 && answer);
+	assert(evaluate("a&!(s|u&c|n)|!!!(s&u&n)", trues, falses, pf, answer) == 0 && answer);
+	assert(evaluate("a&!(s|u&c|n)|!!!(s&u&b)", trues, falses, pf, answer) == 2 && answer);
 }

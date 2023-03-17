@@ -64,7 +64,7 @@ int main()
                     "X.X.X..X.X",
                     "X...X.XX.X",
                     "XXX......X",
-                    "X.X.XXXX.X",
+                    "X.X.XXXXXX",
                     "X.XXX....X",
                     "X...X..X.X",
                     "XXXXXXXXXX"

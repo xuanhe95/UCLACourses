@@ -1,0 +1,5 @@
+﻿  main.cpp
+C:\Users\zhang\Documents\Github\UCLACourses\CS32\A04\Project4\Project1\Project1\Movie.h(29,27): warning C4018: '<': signed/unsigned mismatch
+C:\Users\zhang\Documents\Github\UCLACourses\CS32\A04\Project4\Project1\Project1\Movie.h(32,27): warning C4018: '<': signed/unsigned mismatch
+C:\Users\zhang\Documents\Github\UCLACourses\CS32\A04\Project4\Project1\Project1\Movie.h(35,27): warning C4018: '<': signed/unsigned mismatch
+  Project1.vcxproj -> C:\Users\zhang\Documents\Github\UCLACourses\CS32\A04\Project4\Project1\Debug\Project1.exe

@@ -1,0 +1,2 @@
+﻿UserDatabase.cpp(37,9): warning : unused variable 'num' [-Wunused-variable]
+  Project4.vcxproj -> C:\Users\zhang\Documents\Github\UCLACourses\CS32\A04\Project4\Project4\Debug\Project4.exe

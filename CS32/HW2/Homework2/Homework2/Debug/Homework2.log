@@ -1,6 +1,6 @@
 ﻿  eval.cpp
 C:\Users\zhang\Documents\Github\UCLACourses\CS32\HW2\Homework2\Homework2\eval.cpp(51,20): warning C4018: '<': signed/unsigned mismatch
 C:\Users\zhang\Documents\Github\UCLACourses\CS32\HW2\Homework2\Homework2\eval.cpp(110,20): warning C4018: '<': signed/unsigned mismatch
-C:\Users\zhang\Documents\Github\UCLACourses\CS32\HW2\Homework2\Homework2\eval.cpp(176,20): warning C4018: '<': signed/unsigned mismatch
-C:\Users\zhang\Documents\Github\UCLACourses\CS32\HW2\Homework2\Homework2\eval.cpp(178,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\zhang\Documents\Github\UCLACourses\CS32\HW2\Homework2\Homework2\eval.cpp(217,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\zhang\Documents\Github\UCLACourses\CS32\HW2\Homework2\Homework2\eval.cpp(219,20): warning C4018: '<': signed/unsigned mismatch
   Homework2.vcxproj -> C:\Users\zhang\Documents\Github\UCLACourses\CS32\HW2\Homework2\Debug\Homework2.exe

@@ -1,0 +1,5 @@
+﻿  StudentWorld.cpp
+C:\Users\zhang\Documents\Github\UCLACourses\CS32\A03\PeachParty-skeleton-win\PeachParty\PeachParty\StudentWorld.cpp(199,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\zhang\Documents\Github\UCLACourses\CS32\A03\PeachParty-skeleton-win\PeachParty\PeachParty\StudentWorld.cpp(208,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\zhang\Documents\Github\UCLACourses\CS32\A03\PeachParty-skeleton-win\PeachParty\PeachParty\StudentWorld.cpp(236,23): warning C4018: '<': signed/unsigned mismatch
+  PeachParty.vcxproj -> C:\Users\zhang\Documents\Github\UCLACourses\CS32\A03\PeachParty-skeleton-win\PeachParty\Debug\PeachParty.exe
