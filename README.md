@@ -10,12 +10,12 @@ Peach Party是 [UCLA Winter CS 32](http://web.cs.ucla.edu/classes/winter23/cs32/
 ### 👸 桃花公主：    
 - “TAB”键：摇 🎲 骰子。   
 - “WASD”键：选择前进方向。   
-- “`”键：开火   
+- “`”键：🚀 开火。   
 
 ### 🦕 耀西：    
 - “Enter”键：摇 🎲 骰子。     
 - “↑↓←→”键：选择前进方向。   
-- “\”键：开火   
+- “\”键：🚀 开火。 
 
 ---
 
