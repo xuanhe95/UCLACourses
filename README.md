@@ -5,7 +5,7 @@ Peach Party是 [UCLA Winter CS 32](http://web.cs.ucla.edu/classes/winter23/cs32/
 游戏由C++编写，模仿了Mario Party的玩法。是一个大富翁类的游戏。  
 作业的主要目的是通过编写游戏学习面向对象编程的设计理念。  
 
-## 操控模式：
+## 🎮 操控模式：
 
 ### 👸 桃花公主：    
 - “TAB”键：摇 🎲 骰子。   
@@ -15,7 +15,12 @@ Peach Party是 [UCLA Winter CS 32](http://web.cs.ucla.edu/classes/winter23/cs32/
 ### 🦕 耀西：    
 - “Enter”键：摇 🎲 骰子。     
 - “↑↓←→”键：选择前进方向。   
-- “\”键：🚀 开火。 
+- “\”键：🚀 开火。
+
+## 💻 程序设计：
+
+- 通过类继承实现了面向对象编程的设计理念。
+- 通过虚函数重写方法实现了不同对象的不同游戏交互行为。
 
 ---
 
