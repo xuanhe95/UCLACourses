@@ -1,9 +1,23 @@
 # 🎉 Peach Party 🎉
 
-Peach Party是 [UCLA Winter CS 32](http://web.cs.ucla.edu/classes/winter23/cs32/syllabus.html) 的课程作业的一部分。 
-我很有幸参与了课程，感谢David Smallberg教授及Carey Nachenberg教授的出色课程设计。
-游戏由C++编写，模仿了Mario Party的玩法。是一个大富翁类的游戏。 
-作业的主要目的是通过编写游戏学习面向对象编程的设计理念。
+Peach Party是 [UCLA Winter CS 32](http://web.cs.ucla.edu/classes/winter23/cs32/syllabus.html) 的课程作业的一部分。  
+我很有幸参与了课程，感谢David Smallberg教授及Carey Nachenberg教授的出色课程设计。  
+游戏由C++编写，模仿了Mario Party的玩法。是一个大富翁类的游戏。  
+作业的主要目的是通过编写游戏学习面向对象编程的设计理念。  
+
+## 操控模式：
+
+### 👸 桃花公主：    
+- “TAB”键：摇 🎲 骰子。   
+- “WASD”键：选择前进方向。   
+- “`”键：开火   
+
+### 🦕 耀西：    
+- “Enter”键：摇 🎲 骰子。     
+- “↑↓←→”键：选择前进方向。   
+- “\”键：开火   
+
+---
 
 该游戏的游戏对象类继承关系如下：
 - 📦 Actor  
@@ -24,11 +38,14 @@ Peach Party是 [UCLA Winter CS 32](http://web.cs.ucla.edu/classes/winter23/cs32/
 
 ---
 
-# 📦 Actor
+## 📦 Actor
+
 Actor类是游戏内所有物体的夫类。两个子类分别为Character和Sqaure，分别负责游戏内动态物体及静态物体。
+- Actor有一个alive参数，如果alive为false，则该Actor将在move()时被清理。
 - isOverlap(Actor\*) 方法用来检测两个Actor是否重叠。
 
 ## 🎭 Character
+
 Character类负责游戏内所有移动的物体，包括Player，Baddie和Vortex
 - 由于Character需要处理移动关系，因此有许多方法来设置Sprite方向，处理移动方向等。
 - swap(Character& other) 方法用于交换两个Character的位置。
