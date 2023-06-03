@@ -1,29 +1,26 @@
-# UCLACourses
-UCLA Courses
+# 🎉 Peach Party 🎉
 
-Peach Party
+Peach Party是 [UCLA Winter CS 32](http://web.cs.ucla.edu/classes/winter23/cs32/syllabus.html) 的课程作业的一部分。 
+我很有幸参与了课程，感谢David Smallberg教授及Carey Nachenberg教授的出色课程设计。
+游戏由C++编写，模仿了Mario Party的玩法。是一个大富翁类的游戏。 
+作业的主要目的是通过编写游戏学习面向对象编程的设计理念。
 
-该游戏由C++编写，模仿了Mario Party的玩法。是一个大富翁类的游戏。
-
-面向对象编程结构：
-
-- Actor  
-  - Character  
-    - Player  
-    - Baddie
-      - Bowser
-      - Boo
-    - Vortex
-  - Sqaure
-    - BlueCoinSquare
-    - RedCoinSquare
-    - StarSquare
-    - DirectionalSquare
-    - BankSquare
-    - EventSquare
-    - DroppingSquare
-    
-- CentralBank
+该游戏的游戏对象类继承关系如下：
+- 📦 Actor  
+  - 🎭 Character  
+    - 🦸 Player  
+    - 🦹 Baddie
+      - 👹Bowser
+      - 👻 Boo
+    - 🚀 Vortex
+  - ◽️ Sqaure
+    - 🟦 BlueCoinSquare
+    - 🟥 RedCoinSquare
+    - 🌟 StarSquare
+    - ⬅️ DirectionalSquare
+    - 🏦 BankSquare
+    - ❓ EventSquare
+    - ⚠️ DroppingSquare
 
 ---
 
@@ -43,7 +40,7 @@ Player类作为玩家，包括Peach和Yoshi
 - Player需要记录ID来分辨 👸 Peach和 🦕 Yoshi。
 - Player需要记录并维护 🪙 金币与 🌟 星星。
 - Player需要记录是否持有 🚀 Vortex。
-- Player需要能投掷🎲骰子。
+- Player需要能投掷 🎲 骰子。
 
 ### 🦹 Baddie
 
@@ -54,7 +51,7 @@ Baddie类作为敌人，当与玩家接触时会发生交互效果。
 
 #### 👹 Bowser
 - 库霸王接触到玩家时，玩家会丢失所有的 🪙 金币与 🌟 星星。
-- 库霸王会随机将其他Sqaure变成 🪤 DroppingSqaure。
+- 库霸王会随机将其他Sqaure变成 ⚠️ DroppingSqaure。
 
 #### 👻 Boo
 - 嘘嘘鬼接触到玩家时将会🎲随机与另一名玩家交换 🪙 金币或 🌟 星星。
@@ -86,14 +83,14 @@ Sqaure类负责游戏内所有静态的物体，每个Square与Player都有不�
 - 如果玩家*经过*BankSqaure，则存5枚 🪙 金币到CentralBank。
 - 如果玩家*停留*在BankSqaure，则CentralBank的所有金币归玩家所有。
 
-### ❗️ EventSqaure
+### ❓ EventSqaure
 
 当玩家*停留*在EventSqaure时，将会在三种事件中选择一种：
-- 传送到🎲随机位置。
+- 传送到 🎲 随机位置。
 - 交换两个玩家的位置。
 - 得到 🚀 Vortex。
 
-### 🪤 DroppingSqaure
+### ⚠️ DroppingSqaure
 
 Bowser可以将其他Sqaure变成DroppingSqaure。
 - 当玩家*停留*在DroppingSqaure时，将失去10枚 🪙 金币或 失去一枚 🌟 星星。
